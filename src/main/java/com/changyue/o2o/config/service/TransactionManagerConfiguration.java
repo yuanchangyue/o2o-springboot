@@ -27,6 +27,4 @@ public class TransactionManagerConfiguration implements TransactionManagementCon
         return new DataSourceTransactionManager(dataSource);
     }
 
-
-
 }

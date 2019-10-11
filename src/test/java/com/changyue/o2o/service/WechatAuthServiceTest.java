@@ -1,6 +1,7 @@
 package com.changyue.o2o.service;
 
 import com.changyue.o2o.BaseTest;
+import com.changyue.o2o.dto.WechatAuthExecution;
 import com.changyue.o2o.entity.PersonInfo;
 import com.changyue.o2o.entity.WechatAuth;
 import org.junit.Test;
@@ -22,8 +23,9 @@ public class WechatAuthServiceTest extends BaseTest {
     public void testRegisterWecha() {
 
         WechatAuth wechatAuth = new WechatAuth();
-        wechatAuth.setOpenId("123123");
+        wechatAuth.setOpenId("22222");
         wechatAuth.setCreateTime(new Date());
+
         PersonInfo personInfo = new PersonInfo();
         personInfo.setName("袁阊越");
         personInfo.setEmail("604028466@qq.com");
@@ -31,6 +33,7 @@ public class WechatAuthServiceTest extends BaseTest {
         personInfo.setUserType(1);
         wechatAuth.setPersonInfo(personInfo);
 
-        wechatAuthService.registerWechat(wechatAuth);
+        WechatAuthExecution wechatAuthExecution = wechatAuthService.registerWechat(wechatAuth);
+        System.out.println(wechatAuthExecution);
     }
 }

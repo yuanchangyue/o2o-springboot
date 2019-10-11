@@ -21,6 +21,7 @@ public interface WechatAuthService {
      *
      * @param wechatAuth 微信认证信息
      * @return 微信认证信息包装类
+     * @throws WechtAuthOperationException 微信操作异常类
      */
     WechatAuthExecution registerWechat(WechatAuth wechatAuth) throws WechtAuthOperationException;
 

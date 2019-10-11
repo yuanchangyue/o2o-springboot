@@ -49,7 +49,7 @@ public class WechatAuthServiceImpl implements WechatAuthService {
             wechatAuth.setCreateTime(new Date());
             //微信账号有用户信息，没有userId 就是没有进过数据库(第一次使用微信登录)
             //自动创建用户信息
-            if ((wechatAuth.getPersonInfo() != null) && (wechatAuth.getPersonInfo().getUserId() <= 0)) {
+            if ((wechatAuth.getPersonInfo() != null) && (wechatAuth.getPersonInfo().getUserId() == null)) {
                 try {
                     wechatAuth.getPersonInfo().setCreateTime(new Date());
                     wechatAuth.getPersonInfo().setEnableStatus(1);

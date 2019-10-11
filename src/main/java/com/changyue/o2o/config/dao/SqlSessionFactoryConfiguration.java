@@ -64,6 +64,7 @@ public class SqlSessionFactoryConfiguration {
      */
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactoryBean createSqlSessionFactoryBean() throws IOException {
+
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource);
         sqlSessionFactory.setConfigLocation(new ClassPathResource(myBatisConfigurationXml));

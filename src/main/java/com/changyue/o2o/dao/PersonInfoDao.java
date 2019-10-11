@@ -1,6 +1,7 @@
 package com.changyue.o2o.dao;
 
 import com.changyue.o2o.entity.PersonInfo;
+import org.springframework.stereotype.Repository;
 
 /**
  * @program: o2o
@@ -8,6 +9,7 @@ import com.changyue.o2o.entity.PersonInfo;
  * @author: YuanChangYue
  * @create: 2019-09-24 12:51
  */
+@Repository
 public interface PersonInfoDao {
 
     /**
