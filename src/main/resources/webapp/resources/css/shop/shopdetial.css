@@ -1,0 +1,171 @@
+/*顶部 nav bar*/
+.nav-bar .top-nav {
+    padding: 10px;
+    height: 80px;
+    position: relative;
+    left: 0;
+    right: 0;
+    background-image: url("https://cube.elemecdn.com/4/dc/54c609f337a01d65d15199e5165a9png.png?x-oss-process=image/format,webp/resize,w_750");
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fas {
+    top: 10px;
+    position: absolute;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.fa-share {
+    right: 10px;
+}
+
+.fa-search {
+    right: 40px;
+}
+
+.fa-chevron-left {
+    left: 10px;
+}
+
+
+.top-nav::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0), rgba(0, 0, 0, .5));
+}
+
+.top-nav .shop-img {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    background-color: #ffffff;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    margin-left: -45px;
+    border-radius: 5px;
+    border: 1px solid #e1e1e1;
+}
+
+.top-shop-info .shop-title {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.top-shop-info .shop-desc {
+    color: #666;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    /* font-weight: 700; */
+    overflow: hidden;
+    white-space: nowrap;
+    width: 4rem;
+    width: 40vw;
+    text-overflow: ellipsis;
+}
+
+.top-shop-info {
+    position: absolute;
+    top: 125px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+/*商品*/
+.proc-warp {
+    margin: 120px auto;
+    height: 100%;
+}
+
+.proc-content {
+    margin-bottom: 10px;
+}
+
+.proc-root {
+    display: flex;
+    align-items: center;
+}
+
+.proc-root .proc-img {
+    border-radius: 5px;
+    width: 100px;
+    height: 100px;
+    -webkit-flex: none;
+    flex: none;
+    margin-right: 5px;
+    position: relative;
+}
+
+.proc-root .proc-info {
+    flex: 1;
+}
+
+.proc-root .proc-info .proc-desc {
+    margin: 20px 0 !important;
+    color: #999;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.proc-root .proc-info .proc-price s {
+    font-size: 10px;
+    color: #999;
+    margin-left: 10px;
+}
+
+.proc-root .proc-info .proc-price span {
+    color: rgb(255, 83, 57);
+}
+
+.proc-root .proc-info .proc-name {
+    font-weight: 700;
+    overflow: hidden;
+    font-size: 14px;
+    white-space: nowrap;
+    width: 140px;
+    text-overflow: ellipsis;
+}
+
+.proc-warp .show-proc-list .show-category-list li a {
+    color: #666666;
+}
+
+.proc-warp .show-proc-list .show-category-list li {
+    padding: 10px;
+}
+
+.proc-warp .show-proc-list .show-category-list {
+    font-size: 16px;
+    height: 100%;
+    color: #666;
+    width: 100px;
+    background: #f8f8f8;
+    margin-right: 10px;
+}
+
+.proc-warp .show-proc-list .proc-box {
+    flex: 1;
+}
+
+.proc-warp .show-proc-list {
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+

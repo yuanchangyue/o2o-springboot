@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商铺详情</title>
+    <link rel="stylesheet" href="../resources/css/bootstrap.css">
+    <link rel="stylesheet" href="../resources/css/clear.css">
+    <link rel="stylesheet" href="../resources/css/shop/shopdetial.css">
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="nav-bar">
+    <div class="top-nav">
+        <i class="fas fa-chevron-left" onclick="window.location.href='/o2o/frontend/shoplist'"></i>
+        <i class="fas fa-search"></i>
+        <i class="fas fa-share"></i>
+        <img src="" alt="" class="shop-img">
+    </div>
+    <div class="top-shop-info text-center">
+        <h2 class="shop-title"></h2>
+        <span class="shop-desc"></span>
+    </div>
+</div>
+
+<div class="proc-warp">
+    <div class="show-proc-list" id="show-proc-list">
+        <ul class="show-category-list">
+        </ul>
+
+        <dl class="proc-box">
+            <dt class="heading"></dt>
+        </dl>
+    </div>
+
+
+</div>
+
+<script src="../resources/assets/js/lib/jquery.min.js"></script>
+<script src="../resources/assets/js/shop/common.js"></script>
+<script src="../resources/assets/js/bootstrap/bootstrap.min.js"></script>
+
+
+<script>
+
+    $(function () {
+
+        var pageIndex = 1;
+        var pageSize = 999;
+        var productCategoryId = '';
+        var productCategoryName = '';
+        var shopId = getQueryString("shopId");
+        var getShopInfoUrl = "/o2o/frontend/shopdetailpageinfo?shopId=" + shopId;
+        var getProductInfoUrl = "/o2o/frontend/getproductbyshop";
+
+        function showShopInfo(shop) {
+            $(".shop-title").text(shop.shopName);
+            /*$(".navbar").css("backgroundImage", "https://cube.elemecdn.com/4/dc/54c609f…png.png?x-oss-process=image/format,webp/resize,w_750");*/
+            $(".shop-desc").text(shop.shopDesc);
+            $(".shop-img").attr("src", shop.shopImg);
+        }
+
+        /**
+         * 展示该商铺下面的商品
+         */
+        function showProduct() {
+
+            var getProcInfo = getProductInfoUrl + "?shopId=" + shopId + "&pageIndex=" + pageIndex + "&pageSize=" + pageSize + "&productCategoryName=" + productCategoryName + "&productCategoryId=" + productCategoryId;
+
+            $(".proc-box").html("");
+
+            $.getJSON(getProcInfo, function (data) {
+
+                console.info(getProcInfo);
+                console.info(data);
+
+                var tempHtml = '';
+                if (data.success) {
+
+                    $.map(data.productPageInfo.list, function (products, index) {
+
+                        tempHtml += '<dd class="proc-content" data-id="' + products.productId + '" >' +
+                            '    <div class="proc-root">' +
+                            '        <img class="proc-img"' +
+                            '             src="' + products.imgAddr + '"' +
+                            '             alt="' + products.productDesc + '">' +
+                            '        <section class="proc-info">' +
+                            '            <p class="proc-name">' + products.productName + '</p>' +
+                            '            <p class="proc-desc">' + products.productDesc + '</p>' +
+                            '            <p class="proc-price"><span>￥' + products.promotionPrice + '</span><s>' + products.normalPrice + '</s></p>' +
+                            '        </section>' +
+                            '    </div>' +
+                            '</dd> ';
+                    });
+                }
+
+                $(".proc-box").html(tempHtml);
+
+            })
+        }
+
+        function showCategory(category) {
+            var tempCategoryHtml = '<li><a class="product-category" href="#" data-category-id="">全部</a></li>';
+            category.map(function (item, index) {
+                tempCategoryHtml += '<li><a  class="product-category" href="#" data-category-id="' + item.productCategoryId + '">' + item.productCategoryName + '</a></li>';
+            });
+            $(".show-category-list").html(tempCategoryHtml);
+        }
+
+        $.getJSON(getShopInfoUrl, function (data) {
+            if (data.success) {
+                console.info(data);
+                showShopInfo(data.shop);
+                showCategory(data.productCategoryList);
+                showProduct();
+            }
+        });
+
+
+        $(document).on("click", ".product-category", function () {
+            productCategoryId = $(this).data("categoryId");
+            showProduct();
+        });
+
+        $(".fa-search").click(function () {
+            window.location.href = "/o2o/frontend/productsearch?shopId=" + shopId;
+        });
+
+        $(document).on("click", ".proc-content", function () {
+            window.location.href = '/o2o/frontend/productdetail?productId=' + $(this).data("id");
+        })
+
+    });
+
+</script>
+
+
+</body>
+</html>

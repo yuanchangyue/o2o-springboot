@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+
+<!-- source http://www.scnoob.com More templates http://www.scnoob.com/moban.html -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="Cosmo - Responsive Dashboard Admin Template">
+    <meta name="author" content="Akshay Kumar">
+
+    <link rel="icon" href="../resources/assets/images/favicon.ico">
+
+    <!-- Messgaes CSS -->
+    <link href="../resources/assets/css/pages/messages.css" rel="stylesheet">
+
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="../resources/assets/css/basestyle/style.css">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Date Range Picker -->
+    <link rel="stylesheet" type="text/css" href="../resources/assets/css/daterangepicker/daterangepicker.css"/>
+
+    <!-- Full Calendar Icons -->
+    <link href="../resources/assets/css/fullcalendar/fullcalendar.css" rel="stylesheet">
+
+
+    <title id="page-title"></title>
+
+</head>
+<body>
+
+<!-- Pre Loader-->
+<div class="loader-wrapper">
+    <div class="spinner">
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="length" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+    </div>
+</div>
+<!-- Pre Loader-->
+
+
+<section class="wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand m-0 py-2 brand-title" href="#">o2o商铺管理后台</a>
+            <span></span>
+            <a class="navbar-brand py-2 material-icons toggle-sidebar" href="#">menu</a>
+        </nav>
+
+        <nav class="navigation">
+
+            <ul>
+                <li class="open active">
+                    <a href="#" title="Layout Options">
+                        <span class="nav-icon material-icons">dashboard
+                    </span> 商铺管理<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span>
+                    </a>
+                    <ul class="sub-nav">
+                        <li><a href="shoplist">商铺列表</a></li>
+                        <li><a href="shopoperation">商铺注册</a></li>
+                        <li class="active"><a href="shopoperation">商铺编辑</a></li>
+                        <li><a href="fixed-layout.html">商铺注销</a></li>
+                        <li><a href="shopcategorymanagement.html" title="Fixed Layout">商品类别管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!--RIGHT CONTENT AREA-->
+    <div class="content-area">
+
+        <header class="header sticky-top">
+            <nav class="navbar navbar-light bg-white px-sm-4 ">
+                <a class="navbar-brand py-2 d-md-none  m-0 material-icons toggle-sidebar" href="#">menu</a>
+                <ul class="navbar-nav flex-row ml-auto">
+                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Switch Application">
+                        <a data-toggle="modal" href="#" data-target="#switchApp" class="nav-link"><span
+                                class="material-icons align-middle">apps</span></a>
+                    </li>
+                    <li class="nav-item notification">
+                        <a href="#" id="notificationDropdown" data-toggle="dropdown" class="nav-link"><span
+                                class="material-icons align-middle">notifications_none</span></a>
+                        <div class="dropdown-menu p-0 dropdown-lg notificationDropdown dropdown-menu-right"
+                             aria-labelledby="notificationDropdown">
+
+                            <a class="dropdown-item py-3 border-bottom" href="#">
+                                <p class="text-muted mb-1">
+                                    <small>John Doe Application</small>
+                                </p>
+                                <div class="progress" style="height:8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
+                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item py-3 border-bottom" href="#">
+                                <p class="text-muted mb-1">
+                                    <small>Akshay Application</small>
+                                </p>
+                                <div class="progress" style="height:8px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"
+                                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item whitespace-normal py-3 border-bottom" href="#">
+                                <div class="media">
+                                    <img class="mr-3 rounded" width="26" src="../resources/assets/images/user.png">
+                                    <div class="media-body">
+                                        <h6 class="m-0 weight-400">Media heading</h6>
+                                        <small class="text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel
+                                            metus scelerisque ante.
+                                        </small>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a class="dropdown-item py-3 border-bottom" href="#">
+                                <p class="text-muted mb-1">
+                                    <small>Uploading Documents</small>
+                                </p>
+                                <div class="progress" style="height:8px;">
+                                    <div class="progress-bar-animated bg-primary progress-bar-striped"
+                                         role="progressbar" style="width: 40%" aria-valuenow="10" aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item py-3 border-bottom" href="#">
+                                <span class="badge badge-pill badge-danger mr-2">Warning</span>
+                                <small
+                                        class="text-muted">Somthing went wrong !
+                                </small>
+                            </a>
+                            <button type="button" class="btn btn-light btn-sm btn-block">View All</button>
+                        </div>
+                    </li>
+
+                    <li class="nav-item ml-sm-3 dropdown">
+                        <a href="#" id="userLoginDropdown" data-toggle="dropdown"
+                           class="nav-link weight-400 dropdown-toggle"></a>
+                        <div class="dropdown-menu dropdown-menu-right"
+                             aria-labelledby="userLoginDropdown" id="dropdown-menu-personal">
+
+                        </div>
+                    </li>
+
+                </ul>
+            </nav>
+        </header>
+
+
+        <div class="content-wrapper">
+
+            <div class="row page-tilte align-items-center">
+                <div class="col-md-auto">
+                    <a href="#" class="mt-3 d-md-none float-right toggle-controls"><span class="material-icons">keyboard_arrow_down</span></a>
+                    <h1 class="weight-300 h3 title form-title"></h1>
+                    <p class="text-muted m-0 desc form-des"></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 mb-4">
+                    <div class="card ">
+                        <div class="card-header form-header"></div>
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <label>商品名称</label>
+                                <div class="item-input">
+                                    <input class="form-control" type="text" id="product-name" placeholder="商品名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>目录</label>
+                                <select class="form-control" id="product-category">
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>优先级</label>
+                                <input class="form-control" type="text" id="priority" placeholder="优先级">
+                            </div>
+                            <div class="form-group">
+                                <label>积分</label>
+                                <input class="form-control" type="text" id="point" placeholder="积分">
+                            </div>
+                            <div class="form-group">
+                                <label>原价</label>
+                                <input class="form-control" type="number" id="normal-price" placeholder="可选">
+                            </div>
+                            <div class="form-group">
+                                <label>现价</label>
+                                <input class="form-control" type="number" id="promotion-price" placeholder="可选">
+                            </div>
+                            <div class="form-group small-img-div">
+                                <label>缩略图</label>
+                                <input class="form-control-file" type="file" id="small-img" placeholder="缩略图">
+                            </div>
+                            <div class="form-group detail-img-div">
+                                <label>详情图片</label>
+                                <input class="form-control-file detail-img" type="file" id="detail-img">
+                            </div>
+                            <div class="form-group">
+                                <label>商品描述</label>
+                                <textarea class="form-control" id="product-desc" placeholder="商品描述"></textarea>
+                            </div>
+                            <div class="form-group form-inline">
+                                <div>验证码:</div>
+                                <input class="form-control" type="text" id="j_captcha" name="verifyCode"
+                                       placeholder="验证码">
+                                <div class="item-input">
+                                    <img id="captcha_img" type="text" alt="点击更换" title="点击更换"
+                                         onclick="changeVerityCode(this)"
+                                         src="../Kaptcha">
+                                </div>
+                            </div>
+
+                            <a href="#" onclick="window.history.back(-1)" class="btn btn-danger">返回商品列表</a>
+                            <a href="#" class="btn btn-primary" id="submit">提交</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="../resources/assets/js/chartjs/Chart.js"></script>
+<script src="../resources/assets/js/chartjs/utils.js"></script>
+<script src="../resources/assets/js/lib/moment.min.js"></script>
+<script src="../resources/assets/js/lib/jquery.min.js"></script>
+<script src="../resources/assets/js/lib/popper.min.js"></script>
+<script src="../resources/assets/js/bootstrap/bootstrap.min.js"></script>
+<script src="../resources/assets/js/chosen-js/chosen.jquery.js"></script>
+<script src="../resources/assets/js/fullcalendar/fullcalendar.js"></script>
+<script src="../resources/assets/js/daterangepicker/daterangepicker.min.js"></script>
+<script src="../resources/assets/js/custom.js"></script>
+
+<script src="../resources/assets/js/shop/common.js"></script>
+<script src="../resources/assets/js/shop/productoperation.js"></script>
+
+</body>
+
+</html>

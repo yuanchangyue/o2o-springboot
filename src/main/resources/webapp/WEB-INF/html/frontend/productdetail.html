@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品详情</title>
+    <link rel="stylesheet" href="../resources/css/bootstrap.css">
+    <link rel="stylesheet" href="../resources/css/clear.css">
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.css" rel="stylesheet">
+</head>
+
+<style>
+
+    .fa-chevron-left {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #ffffff;
+    }
+
+    .product-img img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .product-info {
+        padding: 15px 15px 0;
+        width: 100%;
+    }
+
+    .product-title {
+        font-size: 20px;
+        font-weight: 700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .product-sell, .product-description, .product-price-caption {
+        font-size: 8px;
+        color: #666;
+        line-height: 1;
+    }
+
+    .product-price {
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        margin: 8px 0;
+    }
+
+</style>
+<body>
+
+<div class="product-warp">
+
+</div>
+
+<script src="../resources/assets/js/lib/jquery.min.js"></script>
+<script src="../resources/assets/js/shop/common.js"></script>
+<script src="../resources/assets/js/bootstrap/bootstrap.min.js"></script>
+
+<script>
+
+    $(function () {
+
+        var productId = getQueryString("productId");
+        var queryProductByIdUrl = "/o2o/frontend/getproductbyid?productId=" + productId;
+
+        $.getJSON(queryProductByIdUrl, function (data) {
+            console.info(data);
+            var product = data.product;
+            var productTempHtml = '<div class="product-img">' +
+                '<img src="' + product.imgAddr + '" alt="' + product.productName + '"> <i class="fas fa-chevron-left" onclick="window.history.back(-1);"></i>' +
+                '</div>' +
+                '<div class="product-info">' +
+                '    <p class="product-title">' + product.productName + '</p>' +
+                '    <div class="product-sell"><span>月售100份</span> <span>好评率100%</span></div>' +
+                '    <div class="product-price">' +
+                '        <span class="" style="color: rgb(255, 83, 57);"><span>' + product.promotionPrice + '</span>&nbsp;<del>¥' + product.normalPrice + '  </del></span>' +
+                '    </div>' +
+                '    <p class="product-description">' + product.productDesc + '</p>' +
+                '    <p class="product-price-caption"><span>需要积分: <span style="color: rgb(255, 83, 57);">' + product.point + '</span></span></p>' +
+                '</div>';
+            $(".product-warp").html(productTempHtml);
+        });
+    });
+
+</script>
+
+
+</body>
+</html>

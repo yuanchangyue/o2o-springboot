@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<!-- source http://www.scnoob.com More templates http://www.scnoob.com/moban.html -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../resources/assets/css/basestyle/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../resources/assets/css/fontawesome/fontawesome-all.min.css" rel="stylesheet">
+    <link href="../resources/assets/css/pages/login.css" rel="stylesheet">
+
+    <title>登录</title>
+
+</head>
+<body>
+
+
+<section class="wrapper">
+
+    <div class="login">
+        <div class="image-placeholder">
+            <h1>Lorem ipsum dolor sit amet<br>consectetur pellentesque adipiscing elit.</h1>
+        </div>
+        <div class="form">
+
+            <div class="text-center mb-4"><span class="material-icons text-danger" style="font-size:6rem;">wifi_tethering</span>
+            </div>
+
+            <h3 class="h4 mb-5 text-center">账号登录</h3>
+
+            <form>
+                <div class="form-group">
+                    <label for="usernameInput">用户名</label>
+                    <input type="text" class="form-control" id="usernameInput"
+                           name="userName" placeholder="请输入用户名">
+                </div>
+                <div class="form-group">
+                    <label for="pwInput">密码</label>
+                    <input type="password" class="form-control" id="pwInput"
+                           name="password" placeholder="请输入密码">
+                </div>
+                <div class="form-group" style="display: none" id="verify-box">
+                    <label for="verifyInput">验证码</label>
+                    <input type="text" class="form-control" id="verifyInput"
+                           name="verifyCode" placeholder="请输入验证码">
+                    <br>
+                    <img id="captcha_img" type="text" alt="点击更换" title="点击更换" onclick="changeVerityCode(this)"
+                         src="/o2o/Kaptcha">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">记住我</label>
+                    <a href="#" data-toggle="modal" data-target="#forgotPassword" class="float-right">忘记密码 ?</a>
+                </div>
+                <a id="login-btn" class="btn mt-4 btn-primary btn-block">登录</a>
+            </form>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!--修改密码模态框-->
+<div class="modal fade " id="forgotPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="exampleModalLabel">Forgot Your Password ?</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">用户名</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder="Enter email">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Reset Password</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../resources/assets/js/lib/jquery.min.js"></script>
+<script src="../resources/assets/js/bootstrap/bootstrap.min.js"></script>
+
+<script src="../resources/assets/js/shop/common.js"></script>
+<script src="../resources/assets/js/shop/login.js"></script>
+
+</body>
+</html>

@@ -32,25 +32,23 @@ public class FrontendPageController {
     /**
      * 产品搜索
      */
-    @RequestMapping("/productsearch")
+    @RequestMapping(value = "/productsearch")
     public String productSearch() {
         return "frontend/productsearch";
     }
 
-    @RequestMapping("/index")
+    @RequestMapping(value = "/index")
     public String index() {
         return "frontend/index";
     }
 
     /**
      * 商品详情页
-     *
-     * @return
+
      */
-    @RequestMapping("/productdetail")
+    @RequestMapping(value = "/productdetail")
     public String productDetail() {
         return "frontend/productdetail";
     }
-
 
 }

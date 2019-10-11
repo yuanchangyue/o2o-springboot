@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索</title>
+    <link rel="stylesheet" href="../resources/css/clear.css">
+    <link rel="stylesheet" href="../resources/css/shop/shopdetial.css">
+    <style>
+        body {
+            padding: 10px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .search-input {
+            margin-right: 10px;
+            flex: 1;
+            outline: none;
+            padding: 0 10px;
+            /* text-align: center; */
+            border: 1px solid #e5e5e5;
+            height: 30px;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+        }
+
+        .search-box span {
+            color: #66afe9;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="search-box">
+    <input type="text" class="search-input" placeholder="搜一下">
+    <span onclick="window.history.back(-1);">取消</span>
+</div>
+
+<div class="pro-warp">
+    <dl class="proc-box">
+
+    </dl>
+</div>
+
+
+
+<script src="../resources/assets/js/lib/jquery.min.js"></script>
+<script src="../resources/assets/js/shop/common.js"></script>
+<script src="../resources/assets/js/bootstrap/bootstrap.min.js"></script>
+<script>
+
+    $(function () {
+        var pageIndex = 1;
+        var pageSize = 999;
+        var productCategoryId = '';
+        var productName = '';
+        var shopId = getQueryString("shopId");
+        var getProductInfoUrl = "/o2o/frontend/getproductbyshop";
+
+        function showProduct() {
+
+            var productListUrl = getProductInfoUrl + "?shopId=" + shopId + "&pageIndex=" + pageIndex + "&pageSize=" + pageSize + "&productName=" + productName + "&productCategoryId=" + productCategoryId;
+
+            $.getJSON(productListUrl, function (data) {
+
+                console.info(data);
+
+                var tempHtml = '';
+
+                if (data.success) {
+                    $.map(data.productPageInfo.list, function (products, index) {
+
+                        tempHtml += '<dd class="proc-content">' +
+                            '    <div class="proc-root">' +
+                            '        <img class="proc-img"' +
+                            '             src="' + products.imgAddr + '"' +
+                            '             alt="' + products.productDesc + '">' +
+                            '        <section class="proc-info">' +
+                            '            <p class="proc-name">' + products.productName + '</p>' +
+                            '            <p class="proc-desc">' + products.productDesc + '</p>' +
+                            '            <p class="proc-price"><span>￥' + products.promotionPrice + '</span><s>' + products.normalPrice + '</s></p>' +
+                            '        </section>' +
+                            '    </div>' +
+                            '</dd> ';
+                    });
+                }
+                $(".proc-box").html(tempHtml);
+            })
+        }
+
+        $(".search-box").on("input", function (e) {
+            $(".proc-box").empty();
+            productName = $(".search-input").val();
+            pageIndex = 1;
+            console.info(productName);
+            showProduct();
+        })
+    })
+
+</script>
+
+</body>
+</html>
