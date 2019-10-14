@@ -1,5 +1,7 @@
 package com.changyue.o2o.config.web;
 
+import com.changyue.o2o.interceptor.ShopLoginInterceptor;
+import com.changyue.o2o.interceptor.ShopPermissionInterceptor;
 import com.google.code.kaptcha.servlet.KaptchaServlet;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -20,7 +22,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAware {
-
 
     /**
      * 获得容器
@@ -47,7 +48,7 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
 
         //spring boot 内置tomcat 不能设置server.xml配置docBase 图片的路径
 
-        registry.addResourceHandler("/upload/**").addResourceLocations("file:D:/projectdev/img/upload/");
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:/Users/baidu/work/image/upload/");
     }
 
     /**
@@ -96,6 +97,52 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         return resolver;
     }
 
+    /**
+     * 拦截器
+     * <p>
+     * <mvc:mapping path="/shopadmin/**"/>
+     * <p>
+     * <!--商铺列表-->
+     * <mvc:exclude-mapping path="/shopadmin/shoplist"/>
+     * <mvc:exclude-mapping path="/shopadmin/getshoplist"/>
+     * <p>
+     * <!--商铺注册-->
+     * <mvc:exclude-mapping path="/shopadmin/getshopinitinfo"/>
+     * <mvc:exclude-mapping path="/shopadmin/shopoperation"/>
+     * <mvc:exclude-mapping path="/shopadmin/registershop"/>
+     * <p>
+     * <!--商铺管理-->
+     * <mvc:exclude-mapping path="/shopadmin/shopmanagement"/>
+     * <mvc:exclude-mapping path="/shopadmin/getshopmanagementinfo"/>
+     * <p>
+     * <mvc:exclude-mapping path="/shopadmin/getuser"/>
+     *
+     * <bean id="shopPermissionInterceptor" class="com.changyue.o2o.interceptor.ShopPermissionInterceptor"/>
+     *
+     * @param registry 测试器
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        String interceptPath = "/shopadmin/**";
+        //登录拦截器
+        InterceptorRegistration loginInterceptor = registry.addInterceptor(new ShopLoginInterceptor());
+        loginInterceptor.addPathPatterns(interceptPath);
+        //权限拦截器
+        InterceptorRegistration permissionInterceptor = registry.addInterceptor(new ShopPermissionInterceptor());
+        permissionInterceptor.addPathPatterns(interceptPath);
+
+        //商铺列表
+        permissionInterceptor.excludePathPatterns("/shopadmin/shoplist");
+        permissionInterceptor.excludePathPatterns("/shopadmin/getshoplist");
+        //商铺注册
+        permissionInterceptor.excludePathPatterns("/shopadmin/getshopinitinfo");
+        permissionInterceptor.excludePathPatterns("/shopadmin/shopoperation");
+        permissionInterceptor.excludePathPatterns("/shopadmin/registershop");
+        //商铺管理
+        permissionInterceptor.excludePathPatterns("/shopadmin/shopmanagement");
+        permissionInterceptor.excludePathPatterns("/shopadmin/getshopmanagementinfo");
+        permissionInterceptor.excludePathPatterns("/shopadmin/getuser");
+    }
 
     @Value("${kaptcha.border}")
     private String border;

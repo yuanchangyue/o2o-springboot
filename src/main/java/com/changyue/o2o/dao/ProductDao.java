@@ -2,9 +2,10 @@ package com.changyue.o2o.dao;
 
 import com.changyue.o2o.entity.Product;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface ProductDao {
 
     /**

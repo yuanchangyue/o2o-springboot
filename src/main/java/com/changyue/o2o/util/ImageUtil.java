@@ -29,10 +29,9 @@ public class ImageUtil {
         makeDirPath(targetAddr);
         String relativeAddr = targetAddr + realFileName + extension;
         File dest = new File(PathUtils.getImgBasePath() + relativeAddr);
+
         try {
-            Thumbnails.of(thumbnail.getImage()).size(200, 200)
-                    .outputQuality(.9f)
-                    .toFile(dest);
+            Thumbnails.of(thumbnail.getImage()).size(400, 400).outputQuality(1f).toFile(dest);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -49,7 +48,6 @@ public class ImageUtil {
 
         try {
             Thumbnails.of(thumbnail.getImage()).size(337, 640)
-                    .watermark(Positions.BOTTOM_CENTER, ImageIO.read(new File(baseFile + "/watermark.png")), 0.25f)
                     .outputQuality(.9f)
                     .toFile(dest);
         } catch (IOException e) {

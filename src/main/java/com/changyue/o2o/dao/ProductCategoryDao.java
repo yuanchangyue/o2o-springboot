@@ -2,6 +2,7 @@ package com.changyue.o2o.dao;
 
 import com.changyue.o2o.entity.ProductCategory;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @author: ChangYue
  * @create: 2019-03-25 22:27
  */
+@Repository
 public interface ProductCategoryDao {
 
 

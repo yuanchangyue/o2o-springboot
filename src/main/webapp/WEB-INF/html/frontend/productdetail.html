@@ -73,7 +73,7 @@
             console.info(data);
             var product = data.product;
             var productTempHtml = '<div class="product-img">' +
-                '<img src="' + product.imgAddr + '" alt="' + product.productName + '"> <i class="fas fa-chevron-left" onclick="window.history.back(-1);"></i>' +
+                '<img src="' + getConetxtPath() + product.imgAddr + '" alt="' + product.productName + '"> <i class="fas fa-chevron-left" onclick="window.history.back(-1);"></i>' +
                 '</div>' +
                 '<div class="product-info">' +
                 '    <p class="product-title">' + product.productName + '</p>' +

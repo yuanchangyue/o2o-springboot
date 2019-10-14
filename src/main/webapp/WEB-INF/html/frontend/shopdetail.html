@@ -60,7 +60,7 @@
             $(".shop-title").text(shop.shopName);
             /*$(".navbar").css("backgroundImage", "https://cube.elemecdn.com/4/dc/54c609f…png.png?x-oss-process=image/format,webp/resize,w_750");*/
             $(".shop-desc").text(shop.shopDesc);
-            $(".shop-img").attr("src", shop.shopImg);
+            $(".shop-img").attr("src", getConetxtPath() + shop.shopImg);
         }
 
         /**

@@ -7,7 +7,7 @@ function changeVerityCode(img) {
 }
 
 function handleUser(user) {
-    var personalInfoHtml = '<img id="userLoginDropdownImg" src="' + user.profileImg + '" class="mr-2 rounded" width="28">' + user.name;
+    var personalInfoHtml = '<img id="userLoginDropdownImg" src="'+user.profileImg + '" class="mr-2 rounded" width="28">' + user.name;
     $("#userLoginDropdown").html(personalInfoHtml);
 }
 
@@ -117,7 +117,7 @@ showDropdownMenuPersonal();
  * @returns {string}
  */
 function getConetxtPath() {
-    return "/o2o/";
+    return "\\o2o\\";
 }
 
 

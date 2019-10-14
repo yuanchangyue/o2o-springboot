@@ -1,6 +1,7 @@
 package com.changyue.o2o.dao;
 
 import com.changyue.o2o.entity.ProductImg;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author: ChangYue
  * @create: 2019-04-10 15:31
  */
+@Repository
 public interface ProductImgDao {
 
     /**
