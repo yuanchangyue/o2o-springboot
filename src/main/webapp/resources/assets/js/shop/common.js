@@ -111,3 +111,13 @@ function showDropdownMenuPersonal() {
 }
 
 showDropdownMenuPersonal();
+
+/**
+ * 修正图片地址
+ * @returns {string}
+ */
+function getConetxtPath() {
+    return "/o2o/";
+}
+
+

@@ -1,6 +1,7 @@
 package com.changyue.o2o.web.frontend;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -16,8 +17,9 @@ public class FrontendPageController {
     /**
      * 前端商铺列表
      */
-    @RequestMapping(value = "/shoplist")
+    @GetMapping(value = "shoplist")
     public String shopList() {
+        System.out.println("come in");
         return "frontend/frontendshoplist";
     }
 
@@ -44,7 +46,6 @@ public class FrontendPageController {
 
     /**
      * 商品详情页
-
      */
     @RequestMapping(value = "/productdetail")
     public String productDetail() {

@@ -42,7 +42,7 @@ $(function () {
             $.map(data.shopCategoryList, function (item, index) {
                 var indexCategoryHtml = '<div class="col-xs-3 col-md-4 " id="' + item.shopCategoryId + '">' +
                     '            <div class="shop-category-info text-center">' +
-                    '                <img src="' + item.shopCategoryImg + '" alt=""  class="img-circle img-responsive">' +
+                    '                <img src="' + getConetxtPath() + item.shopCategoryImg + '" alt=""  class="img-circle img-responsive">' +
                     '                <h5>' + item.shopCategoryName + '</h5>' +
                     '            </div>' +
                     '        </div>';
@@ -52,7 +52,7 @@ $(function () {
 
             $.map(data.headLineList, function (item, index) {
                 var indexBannerHtml = '<div class="item" >' +
-                    '            <img src="' + item.lineImg + '" style="object-fit:fill;" alt="...">' +
+                    '            <img src="' + getConetxtPath() + item.lineImg + '" style="object-fit:fill;" alt="...">' +
                     '            <div class="carousel-caption">' +
                     '            </div></div>';
                 $("#index-banner").append(indexBannerHtml);

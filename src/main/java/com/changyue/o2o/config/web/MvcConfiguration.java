@@ -1,13 +1,14 @@
 package com.changyue.o2o.config.web;
 
+import com.google.code.kaptcha.servlet.KaptchaServlet;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
@@ -18,7 +19,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @EnableWebMvc
-public class MvcConfiguration extends WebMvcConfigurationSupport {
+public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAware {
+
 
     /**
      * 获得容器
@@ -39,8 +41,13 @@ public class MvcConfiguration extends WebMvcConfigurationSupport {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+       /* registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/resources/");
         registry.addResourceHandler("/resources/assets/js/**").addResourceLocations("/resources/assets/js/");
-        registry.addResourceHandler("/resources/assets/css/**").addResourceLocations("/resources/assets/css/");
+        registry.addResourceHandler("/resources/assets/css/**").addResourceLocations("/resources/assets/css/");*/
+
+        //spring boot 内置tomcat 不能设置server.xml配置docBase 图片的路径
+
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:D:/projectdev/img/upload/");
     }
 
     /**
@@ -53,12 +60,13 @@ public class MvcConfiguration extends WebMvcConfigurationSupport {
         configurer.enable();
     }
 
+
     /**
      * 创建视图解析器
      *
      * @return 视图解析器
      */
-    @Bean("viewResolver")
+    @Bean("defaultViewResolver")
     public InternalResourceViewResolver createInternalResourceViewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setApplicationContext(applicationContext);
@@ -88,6 +96,56 @@ public class MvcConfiguration extends WebMvcConfigurationSupport {
         return resolver;
     }
 
+
+    @Value("${kaptcha.border}")
+    private String border;
+
+    @Value("${kaptcha.textproducer.font.color}")
+    private String fontColor;
+
+    @Value("${kaptcha.textproducer.font.names}")
+    private String fontName;
+
+    @Value("${kaptcha.img.width}")
+    private String imgSize;
+
+    @Value("${kaptcha.img.height}")
+    private String imgHeight;
+
+    @Value("${kaptcha.textproducer.char.string}")
+    private String charString;
+
+    @Value("${kaptcha.textproducer.font.size}")
+    private String fontSize;
+
+    @Value("${kaptcha.noise.color}")
+    private String noiseColor;
+
+    @Value("${kaptcha.textproducer.char.length}")
+    private String charLength;
+
+
+    /**
+     * 验证码的servlet
+     *
+     * @return servlet
+     */
+    @Bean
+    public ServletRegistrationBean servletRegistrationBean() {
+
+        ServletRegistrationBean<KaptchaServlet> servlet = new ServletRegistrationBean<>(new KaptchaServlet(), "/Kaptcha");
+        servlet.addInitParameter("kaptcha.border", border);
+        servlet.addInitParameter("kaptcha.textproducer.font.color", fontColor);
+        servlet.addInitParameter("kaptcha.textproducer.font.names", fontName);
+        servlet.addInitParameter("kaptcha.img.width", imgSize);
+        servlet.addInitParameter("kaptcha.img.height", imgHeight);
+        servlet.addInitParameter("kaptcha.textproducer.char.string", charString);
+        servlet.addInitParameter("kaptcha.textproducer.font.size", fontSize);
+        servlet.addInitParameter("kaptcha.noise.color", noiseColor);
+        servlet.addInitParameter("kaptcha.textproducer.char.length", charLength);
+
+        return servlet;
+    }
 }
 
 
