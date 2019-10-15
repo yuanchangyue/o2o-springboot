@@ -11,9 +11,6 @@ import java.util.Date;
 public class ShopAuthMap {
 
     private Long shopAuthId;
-    private Long employeeId;
-    private Long shopId;
-    private String name;
     /**
      * 职称名
      */
@@ -40,30 +37,6 @@ public class ShopAuthMap {
 
     public void setShopAuthId(Long shopAuthId) {
         this.shopAuthId = shopAuthId;
-    }
-
-    public Long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public Long getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(Long shopId) {
-        this.shopId = shopId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getTitle() {
@@ -126,9 +99,6 @@ public class ShopAuthMap {
     public String toString() {
         return "ShopAuthMap{" +
                 "shopAuthId=" + shopAuthId +
-                ", employeeId=" + employeeId +
-                ", shopId=" + shopId +
-                ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
                 ", titleFlag=" + titleFlag +
                 ", enableStatus=" + enableStatus +

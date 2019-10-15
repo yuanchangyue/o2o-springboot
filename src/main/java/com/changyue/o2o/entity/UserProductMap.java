@@ -9,11 +9,6 @@ import java.util.Date;
  */
 public class UserProductMap {
     private Long userProductId;
-    private Long userId;
-    private Long productId;
-    private Long shopId;
-    private String userName;
-    private String productName;
     private Date createTime;
     private Integer point;
     private PersonInfo user;
@@ -21,60 +16,12 @@ public class UserProductMap {
     private Shop shop;
     private PersonInfo operator;
 
-    public PersonInfo getOperator() {
-        return operator;
-    }
-
-    public void setOperator(PersonInfo operator) {
-        this.operator = operator;
-    }
-
     public Long getUserProductId() {
         return userProductId;
     }
 
     public void setUserProductId(Long userProductId) {
         this.userProductId = userProductId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public Long getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(Long shopId) {
-        this.shopId = shopId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
     }
 
     public Date getCreateTime() {
@@ -117,4 +64,24 @@ public class UserProductMap {
         this.shop = shop;
     }
 
+    public PersonInfo getOperator() {
+        return operator;
+    }
+
+    public void setOperator(PersonInfo operator) {
+        this.operator = operator;
+    }
+
+    @Override
+    public String toString() {
+        return "UserProductMap{" +
+                "userProductId=" + userProductId +
+                ", createTime=" + createTime +
+                ", point=" + point +
+                ", user=" + user +
+                ", product=" + product +
+                ", shop=" + shop +
+                ", operator=" + operator +
+                '}';
+    }
 }

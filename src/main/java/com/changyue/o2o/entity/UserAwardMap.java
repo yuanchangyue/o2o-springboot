@@ -10,13 +10,10 @@ import java.util.Date;
 public class UserAwardMap {
 
     private Long userAwardId;
-    private Long userId;
-    private Long awardId;
-    private Long shopId;
-    private String userName;
-    private String awardName;
     private Date expireTime;
     private Date createTime;
+    private Date lastEditTime;
+
     /**
      * 是否进行了兑换 0：未兑换 1：已兑换
      */
@@ -42,60 +39,12 @@ public class UserAwardMap {
      */
     private PersonInfo operator;
 
-    public PersonInfo getOperator() {
-        return operator;
-    }
-
-    public void setOperator(PersonInfo operator) {
-        this.operator = operator;
-    }
-
     public Long getUserAwardId() {
         return userAwardId;
     }
 
     public void setUserAwardId(Long userAwardId) {
         this.userAwardId = userAwardId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getAwardId() {
-        return awardId;
-    }
-
-    public void setAwardId(Long awardId) {
-        this.awardId = awardId;
-    }
-
-    public Long getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(Long shopId) {
-        this.shopId = shopId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getAwardName() {
-        return awardName;
-    }
-
-    public void setAwardName(String awardName) {
-        this.awardName = awardName;
     }
 
     public Date getExpireTime() {
@@ -112,6 +61,14 @@ public class UserAwardMap {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Date getLastEditTime() {
+        return lastEditTime;
+    }
+
+    public void setLastEditTime(Date lastEditTime) {
+        this.lastEditTime = lastEditTime;
     }
 
     public Integer getUsedStatus() {
@@ -154,4 +111,27 @@ public class UserAwardMap {
         this.shop = shop;
     }
 
+    public PersonInfo getOperator() {
+        return operator;
+    }
+
+    public void setOperator(PersonInfo operator) {
+        this.operator = operator;
+    }
+
+    @Override
+    public String toString() {
+        return "UserAwardMap{" +
+                "userAwardId=" + userAwardId +
+                ", expireTime=" + expireTime +
+                ", createTime=" + createTime +
+                ", lastEditTime=" + lastEditTime +
+                ", usedStatus=" + usedStatus +
+                ", point=" + point +
+                ", user=" + user +
+                ", award=" + award +
+                ", shop=" + shop +
+                ", operator=" + operator +
+                '}';
+    }
 }

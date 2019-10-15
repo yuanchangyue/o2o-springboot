@@ -57,4 +57,14 @@ public class ProductSellDaily {
     public void setShop(Shop shop) {
         this.shop = shop;
     }
+
+    @Override
+    public String toString() {
+        return "ProductSellDaily{" +
+                "createTime=" + createTime +
+                ", total=" + total +
+                ", product=" + product +
+                ", shop=" + shop +
+                '}';
+    }
 }

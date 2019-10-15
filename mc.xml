@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 关闭注释生成 -->
+        <commentGenerator>
+            <property value="true" name="suppressAllComments"/>
+        </commentGenerator>
+        <!-- 配置数据库连接信息 -->
+        <jdbcConnection password="YUANchangyue05_" userId="work" connectionURL="jdbc:mysql://47.93.193.94:3306/shopping"
+                        driverClass="com.mysql.jdbc.Driver"/>
+        <javaTypeResolver>
+            <property value="false" name="forceBigDecimals"/>
+        </javaTypeResolver>
+        <!-- 指定javabean 生成的位置 -->
+        <javaModelGenerator targetProject=".\src\main\java" targetPackage="com.changyue.o2o.entity">
+            <property value="true" name="enableSubPackages"/>
+            <property value="true" name="trimStrings"/>
+        </javaModelGenerator>
+        <!-- 指定sql映射文件的位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--指定dao生成的位置-->
+        <javaClientGenerator targetProject=".\src\main\java" targetPackage="com.changyue.o2o.dao" type="XMLMAPPER">
+            <property value="true" name="enableSubPackages"/>
+        </javaClientGenerator>
+
+        <!--指定表-->
+        <table domainObjectName="ShopAuthMap" tableName="tb_shop_auth_map" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"
+               selectByExampleQueryId="false"/>
+
+    </context>
+</generatorConfiguration>

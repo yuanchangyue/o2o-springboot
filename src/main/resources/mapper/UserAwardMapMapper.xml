@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.changyue.o2o.dao.UserAwardMapDao">
+
+
+    <resultMap id="userAwardMapResult" type="com.changyue.o2o.entity.UserAwardMap">
+        <id column="user_award_id" jdbcType="INTEGER" property="userAwardId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="last_edit_time" jdbcType="TIMESTAMP" property="lastEditTime"/>
+        <result column="used_status" jdbcType="INTEGER" property="usedStatus"/>
+        <result column="point" jdbcType="INTEGER" property="point"/>
+        <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime"/>
+        <association column="user_id" jdbcType="INTEGER" property="user" javaType="com.changyue.o2o.entity.PersonInfo">
+            <id column="user_id" property="userId"/>
+            <result column="user_name" property="userName"/>
+        </association>
+        <association column="award_id" jdbcType="INTEGER" property="award" javaType="com.changyue.o2o.entity.Award">
+            <id column="award_id" property="awardId"/>
+            <result column="award_name" property="awardName"/>
+        </association>
+        <association column="shop_id" jdbcType="INTEGER" property="shop" javaType="com.changyue.o2o.entity.Shop">
+            <id column="shop_id" property="shopId"/>
+            <result column="shop_name" property="shopName"/>
+        </association>
+        <association column="operator_id" jdbcType="INTEGER" property="operator"
+                     javaType="com.changyue.o2o.entity.PersonInfo">
+            <id column="user_id" property="userId"/>
+            <result column="user_name" property="userName"/>
+        </association>
+    </resultMap>
+
+    <sql id="base_column_list">
+        uam.user_award_id,
+        uam.create_time,
+        uam.used_status,
+        uam.point,
+        buyer.user_id,
+        buyer.name,
+        s.shop_id,
+        s.shop_name,
+        a.award_id,
+        a.award_name,
+        o.user_id as operator_id,
+        o.name as opertor_name
+    </sql>
+
+    <select id="queryUserAwardMapList" resultMap="userAwardMapResult">
+        select
+        <include refid="base_column_list"/>
+        from tb_user_award_map uam,tb_shop s,tb_person_info buyer,tb_award a,tb_person_info o
+        <where>
+            uam.user_id = buyer.user_id and
+            uam.shop_id = s.shop_id and
+            uam.award_id = a.award_id and
+            uam.operator_id = o.user_id
+            <!-- 顾客信息 -->
+            <if test="userAwardCondition.user!=null and userAwardCondition.user.userId!=null">and
+                uam.user_id=#{userAwardCondition.user.userId}
+            </if>
+            <!-- 商铺 -->
+            <if test="userAwardCondition.shop!=null and userAwardCondition.shop.shopId!=null">and
+                uam.shop_id=#{userAwardCondition.shop.shopId}
+            </if>
+            <!-- 顾客的姓名 -->
+            <if test="userAwardCondition.user!=null and userAwardCondition.user.name!=null">and
+                buyer.name like '%${userAwardCondition.user.name}%'
+            </if>
+            <!-- 奖品的名称 -->
+            <if test="userAwardCondition.award!=null and userAwardCondition.award.awardName!=null">and
+                a.award_name like '%${userAwardCondition.award.awardName}%'
+            </if>
+            <!-- 奖品的领取状态 -->
+            <if test="userAwardCondition.usedStatus!=null">and uam.used_status=#{userAwardCondition.usedStatus}</if>
+        </where>
+        order by
+        uam.create_time DESC
+        limit #{rowIndex},#{pageSize}
+    </select>
+
+    <select id="queryUserAwardMapALLList" resultMap="userAwardMapResult">
+        select
+        <include refid="base_column_list"/>
+        from tb_user_award_map uam,tb_shop s,tb_person_info buyer,tb_award a,tb_person_info o
+        <where>
+            uam.user_id = buyer.user_id and
+            uam.shop_id = s.shop_id and
+            uam.award_id = a.award_id and
+            uam.operator_id = o.user_id
+            <!-- 顾客信息 -->
+            <if test="userAwardCondition.user!=null and userAwardCondition.user.userId!=null">and
+                uam.user_id=#{userAwardCondition.user.userId}
+            </if>
+            <!-- 商铺 -->
+            <if test="userAwardCondition.shop!=null and userAwardCondition.shop.shopId!=null">and
+                uam.shop_id=#{userAwardCondition.shop.shopId}
+            </if>
+            <!-- 顾客的姓名 -->
+            <if test="userAwardCondition.user!=null and userAwardCondition.user.name!=null">and
+                buyer.name like '%${userAwardCondition.user.name}%'
+            </if>
+            <!-- 奖品的名称 -->
+            <if test="userAwardCondition.award!=null and userAwardCondition.award.awardName!=null">and
+                a.award_name like '%${userAwardCondition.award.awardName}%'
+            </if>
+            <!-- 奖品的领取状态 -->
+            <if test="userAwardCondition.usedStatus!=null">and uam.used_status=#{userAwardCondition.usedStatus}</if>
+        </where>
+        order by
+        uam.create_time DESC
+    </select>
+
+    <select id="queryUserAwardCount" resultType="int">
+        select count(1)
+        from tb_user_award_map uam,tb_shop s,tb_person_info buyer,tb_award a,tb_person_info o
+        <where>
+            uam.user_id = buyer.user_id and
+            uam.shop_id = s.shop_id and
+            uam.award_id = a.award_id and
+            uam.operator_id = o.user_id
+            <!-- 顾客信息 -->
+            <if test="userAwardCondition.user!=null and userAwardCondition.user.userId!=null">and
+                uam.user_id=#{userAwardCondition.user.userId}
+            </if>
+            <!-- 商铺 -->
+            <if test="userAwardCondition.shop!=null and userAwardCondition.shop.shopId!=null">and
+                uam.shop_id=#{userAwardCondition.shop.shopId}
+            </if>
+            <!-- 顾客的姓名 -->
+            <if test="userAwardCondition.user!=null and userAwardCondition.user.name!=null">and
+                buyer.name= like '%${userAwardCondition.user.name}%'
+            </if>
+            <!-- 奖品的名称 -->
+            <if test="userAwardCondition.award!=null and userAwardCondition.award.awardName!=null">and
+                a.award_name like '%${userAwardCondition.award.awardName}%'
+            </if>
+            <!-- 奖品的领取状态 -->
+            <if test="userAwardCondition.usedStatus!=null">and uam.used_status=#{userAwardCondition.usedStatus}</if>
+        </where>
+    </select>
+
+    <select id="queryUserAwardMapById" resultMap="userAwardMapResult">
+        select
+        <include refid="base_column_list"/>
+        from tb_user_award_map uam,tb_shop s,tb_person_info buyer,tb_award a,tb_person_info o
+        where
+        uam.user_id = buyer.user_id and
+        uam.shop_id = s.shop_id and
+        uam.award_id = a.award_id and
+        uam.operator_id = o.user_id and
+        uam.user_award_id = #{userAwardId}
+    </select>
+
+    <insert id="insertUserAwardMap" parameterType="com.changyue.o2o.entity.UserAwardMap" keyProperty="userAwardId"
+            useGeneratedKeys="true" keyColumn="user_award_id">
+    insert into tb_user_award_map (
+              user_id,
+              award_id,
+              shop_id,
+              award_name,
+              create_time,
+              used_status,
+              point,
+              operator_id)
+    values (
+            #{user.userId,jdbcType=INTEGER},
+            #{award.awardId,jdbcType=INTEGER},
+            #{shop.shopId,jdbcType=INTEGER},
+            #{award.awardName,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{usedStatus,jdbcType=INTEGER},
+            #{point,jdbcType=INTEGER},
+            #{operator.userId,jdbcType=INTEGER})
+    </insert>
+
+    <update id="updateUserAwardMap" parameterType="com.changyue.o2o.entity.UserAwardMap">
+        update tb_user_award_map
+        <set>
+            <if test="usedStatus != null">
+                used_status = #{usedStatus,jdbcType=INTEGER},
+            </if>
+            <if test="point != null">
+                point = #{point,jdbcType=INTEGER},
+            </if>
+            <if test="lastEditTime != null">
+                last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where user_award_id = #{userAwardId,jdbcType=INTEGER} and user_id = #{user.userId}
+    </update>
+
+</mapper>
