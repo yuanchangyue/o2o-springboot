@@ -44,5 +44,11 @@ public class ShopAdminPageController {
         return "backstage/productlist";
     }
 
+    @RequestMapping(value = "/shoppage")
+    public String shopPage() {
+        return "backstage/shoppage";
+    }
+
+
 }
 

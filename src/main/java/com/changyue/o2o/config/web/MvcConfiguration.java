@@ -37,6 +37,8 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
      * 处理静态资源
      * <mvc:resources mapping="/resources/assets/js/**" location="/resources/assets/js/"/>
      * <mvc:resources mapping="/resources/assets/css/**" location="/resources/assets/css/"/>
+     * /Users/baidu/work/image/upload/
+     * D:/projectdev/img/upload/
      *
      * @param registry registry
      */
@@ -48,7 +50,7 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
 
         //spring boot 内置tomcat 不能设置server.xml配置docBase 图片的路径
 
-        registry.addResourceHandler("/upload/**").addResourceLocations("file:/Users/baidu/work/image/upload/");
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:D:/projectdev/img/upload/");
     }
 
     /**

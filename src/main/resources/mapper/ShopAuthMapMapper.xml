@@ -1,127 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.changyue.o2o.dao.ShopAuthMapMapper">
+<mapper namespace="com.changyue.o2o.dao.ShopAuthMapDao">
     <resultMap id="BaseResultMap" type="com.changyue.o2o.entity.ShopAuthMap">
         <id column="shop_auth_id" jdbcType="INTEGER" property="shopAuthId"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
         <result column="title_flag" jdbcType="INTEGER" property="titleFlag"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
         <result column="last_edit_time" jdbcType="TIMESTAMP" property="lastEditTime"/>
         <result column="enable_status" jdbcType="INTEGER" property="enableStatus"/>
-        <!--        <association column="employee_id" jdbcType="INTEGER" property="employeeId" javaType="com.changyue.o2o.entity.PersonInfo">
-
-                </association>
-
-                <result column="shop_id" jdbcType="INTEGER" property="shopId"/>-->
+        <association column="employee_id" jdbcType="INTEGER" property="employee"
+                     javaType="com.changyue.o2o.entity.PersonInfo">
+            <id column="user_id" property="userId"/>
+            <result column="name" property="name"/>
+        </association>
+        <association column="shop_id" jdbcType="INTEGER" property="shop" javaType="com.changyue.o2o.entity.Shop">
+            <id column="shop_id" property="shopId"/>
+            <result column="shop_name" property="shopName"/>
+        </association>
     </resultMap>
 
     <sql id="Base_Column_List">
-    shop_auth_id, employee_id, shop_id, name, title, title_flag, create_time, last_edit_time, 
-    enable_status
-  </sql>
+               sam.shop_auth_id,
+               sam.title,
+               sam.title_flag,
+               sam.create_time,
+               sam.last_edit_time,
+               sam.enable_status,
+               p.user_id,
+               p.name,
+               s.shop_id,
+               s.shop_name
+               </sql>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="queryShopAuthMapListByShopId" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from tb_shop_auth_map
-        where shop_auth_id = #{shopAuthId,jdbcType=INTEGER}
+        from tb_shop_auth_map sam, tb_shop s,tb_person_info p
+        <where>
+            sam.employee_id = p.user_id and
+            sam.shop_id = s.shop_id and
+            sam.shop_id = #{shopId}
+            limit #{rowIndex},#{pageSize}
+        </where>
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tb_shop_auth_map
-    where shop_auth_id = #{shopAuthId,jdbcType=INTEGER}
-  </delete>
-    <insert id="insert" parameterType="com.changyue.o2o.entity.ShopAuthMap">
-    insert into tb_shop_auth_map (shop_auth_id, employee_id, shop_id, 
-      name, title, title_flag, 
-      create_time, last_edit_time, enable_status
-      )
-    values (#{shopAuthId,jdbcType=INTEGER}, #{employeeId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, 
-      #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{titleFlag,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{lastEditTime,jdbcType=TIMESTAMP}, #{enableStatus,jdbcType=INTEGER}
-      )
-  </insert>
-    <insert id="insertSelective" parameterType="com.changyue.o2o.entity.ShopAuthMap">
-        insert into tb_shop_auth_map
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="shopAuthId != null">
-                shop_auth_id,
-            </if>
-            <if test="employeeId != null">
-                employee_id,
-            </if>
-            <if test="shopId != null">
-                shop_id,
-            </if>
-            <if test="name != null">
-                name,
-            </if>
-            <if test="title != null">
-                title,
-            </if>
-            <if test="titleFlag != null">
-                title_flag,
-            </if>
-            <if test="createTime != null">
-                create_time,
-            </if>
-            <if test="lastEditTime != null">
-                last_edit_time,
-            </if>
-            <if test="enableStatus != null">
-                enable_status,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="shopAuthId != null">
-                #{shopAuthId,jdbcType=INTEGER},
-            </if>
-            <if test="employeeId != null">
-                #{employeeId,jdbcType=INTEGER},
-            </if>
-            <if test="shopId != null">
-                #{shopId,jdbcType=INTEGER},
-            </if>
-            <if test="name != null">
-                #{name,jdbcType=VARCHAR},
-            </if>
-            <if test="title != null">
-                #{title,jdbcType=VARCHAR},
-            </if>
-            <if test="titleFlag != null">
-                #{titleFlag,jdbcType=INTEGER},
-            </if>
-            <if test="createTime != null">
-                #{createTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="lastEditTime != null">
-                #{lastEditTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="enableStatus != null">
-                #{enableStatus,jdbcType=INTEGER},
-            </if>
-        </trim>
+
+    <select id="queryShopAuthMapAllListByShopId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_shop_auth_map sam, tb_shop s,tb_person_info p
+        <where>
+            sam.employee_id = p.user_id and
+            sam.shop_id = s.shop_id and
+            sam.shop_id = #{shopId}
+        </where>
+    </select>
+
+    <select id="queryShopAuthMapCount" resultType="int">
+        select count (1) from tb_shop_auth_map sam, tb_shop s,tb_person_info p
+        <where>
+            sam.employee_id = p.user_id and
+            sam.shop_id = s.shop_id and
+            sam.shop_id = #{shopId}
+        </where>
+    </select>
+
+    <select id="queryShopAuthMapByShopAuthId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_shop_auth_map sam, tb_shop s,tb_person_info p
+        <where>
+            sam.employee_id = p.user_id and
+            sam.shop_id = s.shop_id and
+            sam.shop_auth_id = #{shopAuthId}
+        </where>
+    </select>
+
+    <delete id="deleteShopAuthMap" parameterType="long">
+        delete from tb_shop_auth_map
+        where shop_auth_id = #{shopAuthId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertShopAuthMap" parameterType="com.changyue.o2o.entity.ShopAuthMap" keyProperty="shopAuthId"
+            useGeneratedKeys="true" keyColumn="shop_auth_id">
+        insert into tb_shop_auth_map ( employee_id, shop_id,title, title_flag,create_time, last_edit_time, enable_status)
+        values ( #{employee.userId,jdbcType=INTEGER}, #{shop.shopId,jdbcType=INTEGER},
+          #{title,jdbcType=VARCHAR}, #{titleFlag,jdbcType=INTEGER},
+          #{createTime,jdbcType=TIMESTAMP}, #{lastEditTime,jdbcType=TIMESTAMP}, #{enableStatus,jdbcType=INTEGER})
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.changyue.o2o.entity.ShopAuthMap">
+
+    <update id="updateShopAuthMap" parameterType="com.changyue.o2o.entity.ShopAuthMap">
         update tb_shop_auth_map
         <set>
-            <if test="employeeId != null">
-                employee_id = #{employeeId,jdbcType=INTEGER},
-            </if>
-            <if test="shopId != null">
-                shop_id = #{shopId,jdbcType=INTEGER},
-            </if>
-            <if test="name != null">
-                name = #{name,jdbcType=VARCHAR},
-            </if>
             <if test="title != null">
                 title = #{title,jdbcType=VARCHAR},
             </if>
             <if test="titleFlag != null">
                 title_flag = #{titleFlag,jdbcType=INTEGER},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="lastEditTime != null">
                 last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP},
@@ -132,16 +106,5 @@
         </set>
         where shop_auth_id = #{shopAuthId,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.changyue.o2o.entity.ShopAuthMap">
-    update tb_shop_auth_map
-    set employee_id = #{employeeId,jdbcType=INTEGER},
-      shop_id = #{shopId,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      title = #{title,jdbcType=VARCHAR},
-      title_flag = #{titleFlag,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP},
-      enable_status = #{enableStatus,jdbcType=INTEGER}
-    where shop_auth_id = #{shopAuthId,jdbcType=INTEGER}
-  </update>
+
 </mapper>
