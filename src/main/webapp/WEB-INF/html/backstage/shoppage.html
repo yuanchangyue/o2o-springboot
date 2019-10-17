@@ -271,8 +271,8 @@
             </nav>
         </header>
 
-
         <div class="content-wrapper">
+
 
             <div class="row page-tilte align-items-center">
                 <div class="col-md-auto">
@@ -311,10 +311,9 @@
                         <div class="row">
                             <div class="col">
                                 <img id="shop-img" src="" alt="" class="img-thumbnail" style="margin-bottom: 10px">
-                                <h5 class="weight-400">商铺信息</h5>
                                 <p class="text-muted m-0" id="shop-title"></p>
                                 <p class="text-muted m-0" id="shop-desc"></p>
-                                <h5 class="weight-400 mt-4">商铺地址</h5>
+                                <h5 class="weight-400 mt-4">商铺信息</h5>
                                 <p class="text-muted m-0" id="shop-address"></p>
                                 <p class="text-muted m-0">电话: <a href="#" id="shop-phone"></a>
                                 </p>
@@ -326,32 +325,21 @@
                         </div>
 
                         <div class="table-responsive">
+                            <h5 class="weight-400 mt-4">商铺管理人员</h5>
                             <table class="table text-right my-5 shop-auth-table">
                                 <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th class="text-left">雇员</th>
-                                    <th class="text-right">职位</th>
-                                    <th class="text-right">操作</th>
+                                    <th class="text-center">雇员</th>
+                                    <th class="text-center">职位</th>
+                                    <th class="text-center">操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="text-center">01</td>
-                                    <td class="text-left">Character Illustration Design</td>
-                                    <td>22</td>
-                                    <td>$250</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">01</td>
-                                    <td class="text-left">Character Illustration Design</td>
-                                    <td>22</td>
-                                    <td>$250</td>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
-
 
                         <hr class="my-5">
 
@@ -385,7 +373,44 @@
 
     </div>
 
+
 </section>
+
+<div class="modal fade" id="modify-shop-auth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header px-4">
+                <h5 class="modal-title" id="">人员权限管理</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="material-icons ">close</span>
+                </button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="form-group">
+                    <label for="employee-name">雇员：</label>
+                    <input disabled="disabled" type="text" class="form-control" id="employee-name">
+                </div>
+                <div class="form-group">
+                    <label for="employee-position">职位：</label>
+                    <input type="text" class="form-control" id="employee-position"/>
+                </div>
+                <div class="form-group">
+                    <label for="verifyInput">验证码</label>
+                    <input type="text" class="form-control" id="verifyInput" name="verifyCode"
+                           placeholder="请输入验证码">
+                    <br>
+                    <img id="captcha_img_reset" type="text" alt="点击更换" title="点击更换"
+                         onclick="changeVerityCode(this)" src="/o2o/Kaptcha">
+                </div>
+            </div>
+            <div class="modal-footer px-4">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="reset-btn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script src="../resources/assets/js/lib/moment.min.js"></script>
@@ -403,7 +428,9 @@
         var pageIndex = 0;
         var pageSize = 99;
         var getShopInfoUrl = "/o2o/frontend/shopdetailpageinfo?shopId=" + shopId;
+        var getShopAuthMapByIdUrl = "/o2o/shopadmin/getshopauthmapbyid";
         var getShopAuthMapListUrl = "/o2o/shopadmin/listshopauthmapbyshopid?pageIndex=" + pageIndex + "&pageSize=" + pageSize;
+
 
         function showShopInfo(data) {
             var shop = data.shop;
@@ -425,20 +452,24 @@
 
         $.getJSON(getShopInfoUrl, function (data) {
             if (data.success) {
-                //console.info(data);
                 showShopInfo(data);
             }
         });
 
         $.getJSON(getShopAuthMapListUrl, function (data) {
             if (data.success) {
-                console.info(data);
                 showShopAuthMapList(data.shopAuthMapList);
             }
         });
 
-        function getShopAuthMapEnable(enableStatus) {
-            return enableStatus = 0 ? "不可操作" : '<a class="btn mb-2 btn-light">编辑</a>&nbsp;<a class="btn mb-2 btn-light">卸权</a>';
+        function getRestore(enableStatus) {
+            return enableStatus === 0 ? '<button class="btn mb-2 btn-outline-danger btn-restore-and-cancel-power" data-type="0">恢复</button>'
+                : '<button class="btn mb-2 btn-danger btn-restore-and-cancel-power" data-type="1">卸权</button>';
+        }
+
+        function getShopAuthMapEnable(item) {
+            return item.titleFlag === 0 ? "不可操作" : '<button class="btn mb-2 btn-light btn-shop-auth-modify" data-toggle="modal" ' +
+                'data-target="#modify-shop-auth" data-shop-auth="' + item.shopAuthId + '">编辑</button>&nbsp;' + getRestore(item.enableStatus);
         }
 
         function showShopAuthMapList(data) {
@@ -448,18 +479,49 @@
 
                 tempShopAuthMapList += '<tr>' +
                     '<td class="text-center">' + index + '</td>' +
-                    '<td class="text-left">' + item.employee.name + '</td>' +
-                    '<td>' + item.title + '</td>' +
-                    '<td>' + getShopAuthMapEnable(item.enableStatus) + '</td>' +
+                    '<td class="text-center">' + item.employee.name + '</td>' +
+                    '<td class="text-center">' + item.title + '</td>' +
+                    '<td class="text-center">' + getShopAuthMapEnable(item) + '</td>' +
                     '</tr>';
-
             });
 
-            console.info(tempShopAuthMapList);
             $("table tbody").html(tempShopAuthMapList);
+
         }
 
+        $(document).on("click", ".btn-restore-and-cancel-power", function () {
+            var type = $(this).data("type");
+            console.info(type);
+            if (confirm("确定此操作吗？")) {
+                console.info(type);
+                if (type === 1) {
+                    $(this).attr("data-type", 0);
+                    $(this).removeClass("btn-danger");
+                    $(this).addClass("btn-outline-danger");
+                    $(this).text("恢复");
+                } else {
+                    $(this).attr("data-type", 1);
+                    $(this).removeClass("btn-outline-danger");
+                    $(this).addClass("btn-danger");
+                    $(this).text("卸权");
+                }
+            }
+        });
 
+        $(document).on("click", ".btn-shop-auth-modify", function () {
+            $.ajax({
+                url: getShopAuthMapByIdUrl,
+                type: "GET",
+                data: {shopAuthMapId: $(this).data("shop-auth")},
+                success: function (data) {
+                    console.info(data);
+                    if (data.success) {
+                        $("#employee-name").val(data.shopAuthMap.employee.name);
+                        $("#employee-position").val(data.shopAuthMap.title);
+                    }
+                }
+            })
+        })
     })
 </script>
 

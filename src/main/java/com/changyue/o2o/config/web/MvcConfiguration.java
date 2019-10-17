@@ -2,6 +2,8 @@ package com.changyue.o2o.config.web;
 
 import com.changyue.o2o.interceptor.ShopLoginInterceptor;
 import com.changyue.o2o.interceptor.ShopPermissionInterceptor;
+import com.changyue.o2o.util.ImageUtil;
+import com.changyue.o2o.util.PathUtils;
 import com.google.code.kaptcha.servlet.KaptchaServlet;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -50,7 +52,8 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
 
         //spring boot 内置tomcat 不能设置server.xml配置docBase 图片的路径
 
-        registry.addResourceHandler("/upload/**").addResourceLocations("file:D:/projectdev/img/upload/");
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:" + PathUtils.getImgBasePath() + "/upload/");
+
     }
 
     /**
