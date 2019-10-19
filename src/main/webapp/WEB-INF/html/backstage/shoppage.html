@@ -273,7 +273,6 @@
 
         <div class="content-wrapper">
 
-
             <div class="row page-tilte align-items-center">
                 <div class="col-md-auto">
                     <a href="#" class="mt-3 d-md-none float-right toggle-controls"><span class="material-icons">keyboard_arrow_down</span></a>
@@ -288,70 +287,73 @@
                         <button type="button" id="downloadGrid" data-toggle="dropdown"
                                 class="btn btn-secondary py-1 px-2"><span class="material-icons align-text-bottom">save_alt</span></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="downloadGrid">
-                          <a class="dropdown-item" href="#">Save as PDF</a>
-                          <a class="dropdown-item" href="#">Save as Image</a>
-                          <a class="dropdown-item" href="#">Save as Word</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Export Excel</a>
+                         <img id="shop-auth-img" src="/o2o/shopadmin/generateqrcodeshopauth" alt="">
                         </div>
                         </span>
                         <button type="button" class="btn btn-secondary py-1 px-2"><span
-                                class="material-icons align-text-bottom">print</span></button>
+                                class="material-icons align-text-bottom">today</span></button>
                     </div>
                 </div>
             </div>
 
-
             <div class="content">
 
-
-                <div class="card mb-4">
-                    <div class="card-body ">
-
-                        <div class="row">
-                            <div class="col">
-                                <img id="shop-img" src="" alt="" class="img-thumbnail" style="margin-bottom: 10px">
-                                <p class="text-muted m-0" id="shop-title"></p>
-                                <p class="text-muted m-0" id="shop-desc"></p>
-                                <h5 class="weight-400 mt-4">商铺信息</h5>
-                                <p class="text-muted m-0" id="shop-address"></p>
-                                <p class="text-muted m-0">电话: <a href="#" id="shop-phone"></a>
-                                </p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="mx-5 my-4 px-4 text-center">
+                                    <img id="shop-img" src="" alt="" class="img-thumbnail img-fluid">
+                                </div>
+                                <div class="text-center">
+                                    <p class="weight-400 mt-4" id="shop-title"></p>
+                                    <p class="text-muted m-0" id="shop-desc"></p>
+                                </div>
+                                <hr class="my-4 dashed">
+                                <p class="text-muted m-0">地址: <a href="#" id="shop-address"></a></p>
+                                <p class="text-muted m-0">电话: <a href="#" id="shop-phone"></a></p>
                                 <p class="text-muted m-0">邮箱: <a href="#" id="shop-email">akshay.azaste@gmail.com</a>
                                 </p>
+                                <hr class="my-4 dashed">
                                 <h5 class="weight-400 mt-4">商品类别</h5>
                                 <p class="text-muted m-0" id="shop-category"></p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="table-responsive">
-                            <h5 class="weight-400 mt-4">商铺管理人员</h5>
-                            <table class="table text-right my-5 shop-auth-table">
-                                <thead>
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th class="text-center">雇员</th>
-                                    <th class="text-center">职位</th>
-                                    <th class="text-center">操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <h5 class="weight-400 mt-4">商铺管理人员</h5>
+                                    <table class="table text-right my-5 shop-auth-table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th class="text-center">雇员</th>
+                                            <th class="text-center">职位</th>
+                                            <th class="text-center">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
 
-                                </tbody>
-                            </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
 
-                        <hr class="my-5">
-
-                        <p class="text-center text-muted weight-300"><small>In exceptional circumstances, Financial
-                            Services can provide an urgent manually processed special cheque. Note, however, that urgent
-                            special cheques should be requested only on an emergency basis as manually produced cheques
-                            involve duplication of effort and considerable staff resources. Requests need to be
-                            supported by a letter explaining the circumstances to justify the special cheque
-                            payment.</small></p>
 
                     </div>
                 </div>
+                <hr class="my-5">
+
+                <p class="text-center text-muted weight-300"><small>In exceptional circumstances, Financial
+                    Services can provide an urgent manually processed special cheque. Note, however, that urgent
+                    special cheques should be requested only on an emergency basis as manually produced cheques
+                    involve duplication of effort and considerable staff resources. Requests need to be
+                    supported by a letter explaining the circumstances to justify the special cheque
+                    payment.</small></p>
 
                 <div class="alert alert-warning">
                     <p>Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur id illo incidunt,
@@ -372,7 +374,6 @@
         </div>
 
     </div>
-
 
 </section>
 
@@ -400,13 +401,13 @@
                     <input type="text" class="form-control" id="verifyInput" name="verifyCode"
                            placeholder="请输入验证码">
                     <br>
-                    <img id="captcha_img_reset" type="text" alt="点击更换" title="点击更换"
+                    <img id="captcha_img" type="text" alt="点击更换" title="点击更换"
                          onclick="changeVerityCode(this)" src="/o2o/Kaptcha">
                 </div>
             </div>
             <div class="modal-footer px-4">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" id="reset-btn">确定</button>
+                <button type="button" class="btn btn-primary" id="save-btn">确定</button>
             </div>
         </div>
     </div>
@@ -423,13 +424,16 @@
 <script src="../resources/assets/js/shop/common.js"></script>
 
 <script>
+
     $(function () {
-        var shopId = getQueryString("shopId");
+
         var pageIndex = 0;
         var pageSize = 99;
-        var getShopInfoUrl = "/o2o/frontend/shopdetailpageinfo?shopId=" + shopId;
+        var getShopInfoUrl = "/o2o/shopadmin/getshopbyrequest";
         var getShopAuthMapByIdUrl = "/o2o/shopadmin/getshopauthmapbyid";
         var getShopAuthMapListUrl = "/o2o/shopadmin/listshopauthmapbyshopid?pageIndex=" + pageIndex + "&pageSize=" + pageSize;
+
+        var modifyShopAuthMap = '/o2o/shopadmin/modifyshopauthmap';
 
 
         function showShopInfo(data) {
@@ -468,6 +472,7 @@
         }
 
         function getShopAuthMapEnable(item) {
+            console.info(item);
             return item.titleFlag === 0 ? "不可操作" : '<button class="btn mb-2 btn-light btn-shop-auth-modify" data-toggle="modal" ' +
                 'data-target="#modify-shop-auth" data-shop-auth="' + item.shopAuthId + '">编辑</button>&nbsp;' + getRestore(item.enableStatus);
         }
@@ -509,19 +514,60 @@
         });
 
         $(document).on("click", ".btn-shop-auth-modify", function () {
+            var shopAuthId = $(this).data("shop-auth");
             $.ajax({
                 url: getShopAuthMapByIdUrl,
                 type: "GET",
-                data: {shopAuthMapId: $(this).data("shop-auth")},
+                data: {shopAuthMapId: shopAuthId},
                 success: function (data) {
                     console.info(data);
                     if (data.success) {
                         $("#employee-name").val(data.shopAuthMap.employee.name);
                         $("#employee-position").val(data.shopAuthMap.title);
+                        $("#save-btn").attr("data-shop-auth-id", shopAuthId);
                     }
                 }
             })
-        })
+        });
+
+
+        $("#save-btn").click(function () {
+
+            var shopAuth = {};
+            shopAuth.employee = {};
+            shopAuth.employee.name = $("#employee-name").val();
+            shopAuth.shopAuthId = $("#save-btn").data("shop-auth-id");
+            shopAuth.title = $("#employee-position").val();
+
+            var verifyCode = $("#verifyInput").val();
+            if (!verifyCode) {
+                alert("请输入验证码");
+                return;
+            }
+
+            $.ajax({
+                url: modifyShopAuthMap,
+                type: "POST",
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                data: {
+                    shopAuthMapStr: JSON.stringify(shopAuth),
+                    verifyCodeActual: verifyCode
+                },
+                success: function (data) {
+                    if (data.success) {
+                        alert("提交成功");
+                        //$("#captcha_img").click();
+                        window.location.href = "/o2o/shopadmin/shoppage";
+                    } else {
+                        alert("提交失败");
+                        $("#captcha_img").click();
+                    }
+                }
+            });
+
+        });
+
+
     })
 </script>
 

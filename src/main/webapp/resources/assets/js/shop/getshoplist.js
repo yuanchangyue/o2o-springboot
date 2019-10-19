@@ -102,7 +102,7 @@ $(function () {
                 '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="actionDropdown" x-placement="left-start" style="position: absolute; transform: translate3d(24px, 13px, 0px); top: 0px; left: 0px; will-change: transform;">' +
                 '    <a class="dropdown-item" href="productlist?shopId=' + id + '" > 商品管理 </a>' +
                 '    <a class="dropdown-item" href="productcategorymanagement?shopId=' + id + '">商品类别管理</a>' +
-                '    <a class="dropdown-item" href="shoppage?shopId=' + id + '">进入</a>' +
+                '    <a class="dropdown-item" href="shoppage">进入</a>' +
                 '</div>';
         } else {
             return "";

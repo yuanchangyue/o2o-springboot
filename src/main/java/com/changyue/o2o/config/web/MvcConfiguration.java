@@ -132,6 +132,8 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         //登录拦截器
         InterceptorRegistration loginInterceptor = registry.addInterceptor(new ShopLoginInterceptor());
         loginInterceptor.addPathPatterns(interceptPath);
+        //二维码
+        loginInterceptor.excludePathPatterns("/shopadmin/addshopauthmap");
         //权限拦截器
         InterceptorRegistration permissionInterceptor = registry.addInterceptor(new ShopPermissionInterceptor());
         permissionInterceptor.addPathPatterns(interceptPath);
@@ -147,6 +149,8 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         permissionInterceptor.excludePathPatterns("/shopadmin/shopmanagement");
         permissionInterceptor.excludePathPatterns("/shopadmin/getshopmanagementinfo");
         permissionInterceptor.excludePathPatterns("/shopadmin/getuser");
+        //二维码
+        permissionInterceptor.excludePathPatterns("/shopadmin/addshopauthmap");
     }
 
     @Value("${kaptcha.border}")

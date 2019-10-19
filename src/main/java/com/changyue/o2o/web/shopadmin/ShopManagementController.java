@@ -3,11 +3,9 @@ package com.changyue.o2o.web.shopadmin;
 import com.changyue.o2o.dto.ImageHolder;
 import com.changyue.o2o.dto.ShopExecution;
 import com.changyue.o2o.emums.ShopStateEnum;
-import com.changyue.o2o.entity.Area;
-import com.changyue.o2o.entity.PersonInfo;
-import com.changyue.o2o.entity.Shop;
-import com.changyue.o2o.entity.ShopCategory;
+import com.changyue.o2o.entity.*;
 import com.changyue.o2o.service.AreaService;
+import com.changyue.o2o.service.ProductCategoryService;
 import com.changyue.o2o.service.ShopCategoryService;
 import com.changyue.o2o.service.ShopService;
 import com.changyue.o2o.util.CodeUtil;
@@ -46,6 +44,9 @@ public class ShopManagementController {
 
     @Autowired
     private AreaService areaService;
+
+    @Autowired
+    private ProductCategoryService productCategoryService;
 
     /**
      * 进行商铺管理前需要获得商铺信息
@@ -121,6 +122,36 @@ public class ShopManagementController {
                 Shop shop = shopService.getByShopId(shopId);
                 List<Area> areaList = areaService.getAreaList();
                 modelMap.put("shop", shop);
+                modelMap.put("areaList", areaList);
+                modelMap.put("success", true);
+            } catch (Exception e) {
+                modelMap.put("success", false);
+                modelMap.put("errMsg", e.getMessage());
+            }
+        } else {
+            modelMap.put("success", false);
+            modelMap.put("errMsg", "empty shopId");
+        }
+
+        return modelMap;
+    }
+
+    /**
+     * 通过在请求域中获得商铺
+     */
+    @RequestMapping(value = "/getshopbyrequest", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getShopByRequest(HttpServletRequest request) {
+        Map<String, Object> modelMap = new HashMap<>();
+        Shop currentShop = (Shop) request.getSession().getAttribute("currentShop");
+
+        if (currentShop != null && currentShop.getShopId() != null) {
+            try {
+                Shop shop = shopService.getByShopId(currentShop.getShopId());
+                List<Area> areaList = areaService.getAreaList();
+                List<ProductCategory> productCategoryList = productCategoryService.getProductCategoryList(currentShop.getShopId());
+                modelMap.put("shop", shop);
+                modelMap.put("productCategoryList", productCategoryList);
                 modelMap.put("areaList", areaList);
                 modelMap.put("success", true);
             } catch (Exception e) {
