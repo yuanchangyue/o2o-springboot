@@ -71,7 +71,6 @@ public class ShopAuthMapController {
         ShopAuthMapController.authUrl = authUrl;
     }
 
-
     /**
      * 生成商铺权限的二维码
      *
@@ -96,7 +95,6 @@ public class ShopAuthMapController {
                 e.printStackTrace();
             }
         }
-
     }
 
 

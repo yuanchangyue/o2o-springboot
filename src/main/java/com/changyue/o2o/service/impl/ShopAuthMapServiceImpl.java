@@ -58,7 +58,7 @@ public class ShopAuthMapServiceImpl implements ShopAuthMapService {
             shopAuthMap.setCreateTime(new Date());
             shopAuthMap.setLastEditTime(new Date());
             shopAuthMap.setEnableStatus(1);
-            shopAuthMap.setTitleFlag(0);
+
 
             try {
                 //添加授权的信息

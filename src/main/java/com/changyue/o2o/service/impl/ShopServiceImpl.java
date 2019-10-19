@@ -1,10 +1,13 @@
 package com.changyue.o2o.service.impl;
 
+import com.changyue.o2o.dao.ShopAuthMapDao;
 import com.changyue.o2o.dao.ShopDao;
 import com.changyue.o2o.dto.ImageHolder;
 import com.changyue.o2o.dto.ShopExecution;
 import com.changyue.o2o.emums.ShopStateEnum;
+import com.changyue.o2o.entity.PersonInfo;
 import com.changyue.o2o.entity.Shop;
+import com.changyue.o2o.entity.ShopAuthMap;
 import com.changyue.o2o.exceptions.ShopOperationException;
 import com.changyue.o2o.service.ShopService;
 import com.changyue.o2o.util.ImageUtil;
@@ -30,6 +33,9 @@ public class ShopServiceImpl implements ShopService {
 
     @Autowired
     private ShopDao shopDao;
+
+    @Autowired
+    private ShopAuthMapDao shopAuthMapDao;
 
     /**
      * 获得商铺列表
@@ -124,6 +130,25 @@ public class ShopServiceImpl implements ShopService {
             shop.setCreateTime(new Date());
             shop.setLastEditTime(new Date());
             int effect = shopDao.insertShop(shop);
+
+            ShopAuthMap shopAuthMap = new ShopAuthMap();
+            shopAuthMap.setCreateTime(new Date());
+            shopAuthMap.setLastEditTime(new Date());
+            shopAuthMap.setTitle("店家");
+            shopAuthMap.setEmployee(shop.getOwner());
+            shopAuthMap.setTitleFlag(0);
+            shopAuthMap.setEnableStatus(1);
+            shopAuthMap.setShop(shop);
+
+            try {
+                int effectShopAuthMapNum = shopAuthMapDao.insertShopAuthMap(shopAuthMap);
+                if (effectShopAuthMapNum <= 0) {
+                    throw new ShopOperationException("授权创建失败");
+                }
+            } catch (Exception e) {
+                throw new ShopOperationException("authShop error: " + e.getMessage());
+            }
+
             if (effect <= 0) {
                 throw new ShopOperationException("店铺创建失败");
             } else {
@@ -139,7 +164,6 @@ public class ShopServiceImpl implements ShopService {
                     }
                 }
             }
-
         } catch (Exception e) {
             throw new ShopOperationException("addShop error: " + e.getMessage());
         }
