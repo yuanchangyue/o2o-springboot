@@ -36,4 +36,10 @@ public interface ProductSellDailyDao {
     List<ProductSellDaily> queryProductSellDaily(@Param("productSellDailyCondition") ProductSellDaily productSellDaily, @Param("beginTime") Date beginDate, @Param("endTime") Date endDate);
 
 
+    /**
+     * 统计平台当天没有销量的商品
+     * @return 影响行数
+     */
+    int insertNullProductSellDaily();
+
 }

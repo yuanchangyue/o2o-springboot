@@ -9,6 +9,8 @@ import java.util.Date;
  * @create: 2019-10-09 15:57
  */
 public class ProductSellDaily {
+
+    private Long productSellDailyId;
     /**
      * 某天的销量 精确到天
      */
@@ -25,6 +27,14 @@ public class ProductSellDaily {
      * 对应的商铺
      */
     private Shop shop;
+
+    public Long getProductSellDailyId() {
+        return productSellDailyId;
+    }
+
+    public void setProductSellDailyId(Long productSellDailyId) {
+        this.productSellDailyId = productSellDailyId;
+    }
 
     public Date getCreateTime() {
         return createTime;
@@ -61,10 +71,12 @@ public class ProductSellDaily {
     @Override
     public String toString() {
         return "ProductSellDaily{" +
-                "createTime=" + createTime +
+                "productSellDailyId=" + productSellDailyId +
+                ", createTime=" + createTime +
                 ", total=" + total +
                 ", product=" + product +
                 ", shop=" + shop +
                 '}';
     }
+
 }

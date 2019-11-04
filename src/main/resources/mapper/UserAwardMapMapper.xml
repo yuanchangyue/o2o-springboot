@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.changyue.o2o.dao.UserAwardMapDao">
 
-
     <resultMap id="userAwardMapResult" type="com.changyue.o2o.entity.UserAwardMap">
         <id column="user_award_id" jdbcType="INTEGER" property="userAwardId"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>

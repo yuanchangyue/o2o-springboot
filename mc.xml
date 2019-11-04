@@ -11,7 +11,7 @@
             <property value="true" name="suppressAllComments"/>
         </commentGenerator>
         <!-- 配置数据库连接信息 -->
-        <jdbcConnection password="YUANchangyue05_" userId="work" connectionURL="jdbc:mysql://47.93.193.94:3306/shopping"
+        <jdbcConnection password="YUANchangyue05_" userId="work" connectionURL="jdbc:mysql://47.93.193.94:3306/classwork"
                         driverClass="com.mysql.jdbc.Driver"/>
         <javaTypeResolver>
             <property value="false" name="forceBigDecimals"/>
@@ -31,7 +31,7 @@
         </javaClientGenerator>
 
         <!--指定表-->
-        <table domainObjectName="ShopAuthMap" tableName="tb_shop_auth_map" enableCountByExample="false"
+        <table domainObjectName="Record" tableName="tb_record" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"
                selectByExampleQueryId="false"/>
 

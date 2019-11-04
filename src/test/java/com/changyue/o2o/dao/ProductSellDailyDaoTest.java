@@ -36,6 +36,12 @@ public class ProductSellDailyDaoTest {
         productSellDaily.setShop(shop);
         List<ProductSellDaily> productSellDailies = productSellDailyDao.queryProductSellDaily(productSellDaily, null, null);
         productSellDailies.forEach(System.out::println);
-
     }
+
+    @Test
+    public void testInsertNullProductSellDaily() {
+        int i = productSellDailyDao.insertNullProductSellDaily();
+        System.out.println(i);
+    }
+
 }

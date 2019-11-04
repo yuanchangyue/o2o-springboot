@@ -47,4 +47,6 @@ public interface UserProductMapDao {
     UserProductMap queryUserProductMapById(Integer userProductId);
 
 
+
+
 }

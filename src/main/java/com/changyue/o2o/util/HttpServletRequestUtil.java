@@ -25,7 +25,6 @@ public class HttpServletRequestUtil {
         }
     }
 
-
     public static double getDouble(HttpServletRequest request, String key) {
         try {
             return Double.valueOf(request.getParameter(key));
