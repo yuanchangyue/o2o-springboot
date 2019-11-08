@@ -5,7 +5,6 @@ import com.changyue.o2o.entity.*;
 import com.changyue.o2o.service.ProductSellDailyService;
 import com.changyue.o2o.service.UserProductMapService;
 import com.changyue.o2o.util.HttpServletRequestUtil;
-import com.sun.javafx.collections.VetoableListDecorator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -122,7 +121,7 @@ public class UserProductMapController {
                 if (i == productSellDailyList.size() - 1) {
                     EchartSeries echartSeries = new EchartSeries();
                     echartSeries.setName(currentProductName);
-                    echartSeries.setData(totalList.subList(0, totalList.size() - 1));
+                    echartSeries.setData(totalList.subList(0, totalList.size()));
                     series.add(echartSeries);
                 }
 
@@ -131,7 +130,17 @@ public class UserProductMapController {
             modelMap.put("series", series);
             modelMap.put("legendDate", legendDate);
 
+            List<EchartXAxis> xAxis = new ArrayList<>();
+            EchartXAxis exa = new EchartXAxis();
+            exa.setData(xData);
+            xAxis.add(exa);
 
+            modelMap.put("success", true);
+            modelMap.put("xAxis", xAxis);
+
+        }else{
+            modelMap.put("success", false);
+            modelMap.put("errMsg", "empty shopId");
         }
 
         return modelMap;

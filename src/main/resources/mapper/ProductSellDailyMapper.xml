@@ -19,7 +19,7 @@
 
     <select id="queryProductSellDaily" resultMap="BaseResultMap">
         select
-        psd.product_sell_daily_id
+        psd.product_sell_daily_id,
         psd.create_time,
         psd.total,
         s.shop_id,
