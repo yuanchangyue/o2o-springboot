@@ -13,8 +13,13 @@
         from tb_award
         <where>
             <if test="awardCondition.awardName!=null">and award_name like '%${awardCondition.awardName}%'</if>
+<<<<<<< HEAD
             <if test="awardCondition.shopId!=null">and shop_id = #{awardCondition.shopId}</if>
             <if test="awardCondition.enableStatus!=null">and enable_status = #{awardCondition.enableStatus}</if>
+=======
+            <if test="awardCondition.shopId!=null">and shop_id #{awardCondition.shopId}</if>
+            <if test="awardCondition.enableStatus!=null">and enable_status #{awardCondition.enableStatus}</if>
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         </where>
         order by
         priority DESC
@@ -61,7 +66,11 @@
             <if test="awardImg!=null">award_img = #{awardImg},</if>
             <if test="point!=null">point = #{point},</if>
             <if test="priority!=null">priority = #{priority},</if>
+<<<<<<< HEAD
             <if test="lastEditTime!=null">last_edit_time = #{lastEditTime},</if>
+=======
+            <if test="lastEditTime!=null">last_edit_time = #{lastEditTime}</if>
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
             <if test="enableStatus!=null">enable_status = #{enableStatus}</if>
         </set>
         where award_id =#{awardId} and shop_id = #{shopId}

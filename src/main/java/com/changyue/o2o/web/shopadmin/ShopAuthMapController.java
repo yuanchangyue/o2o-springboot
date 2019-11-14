@@ -208,7 +208,11 @@ public class ShopAuthMapController {
 
         boolean statusChange = HttpServletRequestUtil.getBoolean(request, "statusChange");
 
+<<<<<<< HEAD
         if (statusChange && CodeUtil.checkVerityCode(request)) {
+=======
+        if (!statusChange && CodeUtil.checkVerityCode(request)) {
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
             modelMap.put("success", false);
             modelMap.put("errMsg", "输入了错误的验证码！");
             return modelMap;

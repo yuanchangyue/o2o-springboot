@@ -9,7 +9,10 @@
         <association column="user_id" jdbcType="INTEGER" property="user" javaType="com.changyue.o2o.entity.PersonInfo">
             <id column="user_id" property="userId"/>
             <result column="name" property="name"/>
+<<<<<<< HEAD
             <result column="profile_img" property="profileImg"/>
+=======
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         </association>
         <association column="shop_id" jdbcType="INTEGER" property="shop" javaType="com.changyue.o2o.entity.Shop">
             <id column="shop_id" property="shopId"/>
@@ -23,7 +26,10 @@
         usm.point,
         buyer.user_id,
         buyer.name,
+<<<<<<< HEAD
         buyer.profile_img,
+=======
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         s.shop_id,
         s.shop_name
     </sql>

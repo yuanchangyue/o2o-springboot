@@ -24,6 +24,10 @@ public class ShopLoginInterceptor extends HandlerInterceptorAdapter {
         Object userObj = request.getSession().getAttribute("user");
 
         if (userObj != null) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
             PersonInfo user = (PersonInfo) userObj;
             if (user != null && user.getUserId() != null && user.getEnableStatus() == 1) {
                 return true;

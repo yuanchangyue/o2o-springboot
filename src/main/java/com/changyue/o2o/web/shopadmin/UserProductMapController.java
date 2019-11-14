@@ -38,6 +38,10 @@ public class UserProductMapController {
 
         int pageIndex = HttpServletRequestUtil.getInt(request, "pageIndex");
         int pageSize = HttpServletRequestUtil.getInt(request, "pageSize");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         Shop currentShop = (Shop) request.getSession().getAttribute("currentShop");
         if ((pageIndex > -1) && (pageSize > -1) && (currentShop != null) && (currentShop.getShopId() != null)) {
             UserProductMap userProductMap = new UserProductMap();
@@ -115,6 +119,10 @@ public class UserProductMapController {
                     totalList.add(productSellDaily.getTotal());
                     currentProductName = productSellDaily.getProduct().getProductName();
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
                 //列表的最后 把最后的信息加上
                 if (i == productSellDailyList.size() - 1) {
                     EchartSeries echartSeries = new EchartSeries();
@@ -122,22 +130,36 @@ public class UserProductMapController {
                     echartSeries.setData(totalList.subList(0, totalList.size()));
                     series.add(echartSeries);
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
             }
 
             modelMap.put("series", series);
             modelMap.put("legendDate", legendDate);
 
+<<<<<<< HEAD
 
             List<EchartXAxis> xAxis = new ArrayList<>();
             EchartXAxis exa = new EchartXAxis();
             exa.setData(xData);
 
+=======
+            List<EchartXAxis> xAxis = new ArrayList<>();
+            EchartXAxis exa = new EchartXAxis();
+            exa.setData(xData);
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
             xAxis.add(exa);
 
             modelMap.put("success", true);
             modelMap.put("xAxis", xAxis);
 
+<<<<<<< HEAD
         } else {
+=======
+        }else{
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
             modelMap.put("success", false);
             modelMap.put("errMsg", "empty shopId");
         }

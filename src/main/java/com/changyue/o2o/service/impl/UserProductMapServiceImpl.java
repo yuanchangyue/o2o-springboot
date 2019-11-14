@@ -23,14 +23,23 @@ public class UserProductMapServiceImpl implements UserProductMapService {
     @Autowired
     private UserProductMapDao userProductMapDao;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
     @Override
     public UserProductMapExecution listUserProductMap(UserProductMap userProductCondition, Integer pageIndex, Integer pageSize) {
 
         if (userProductCondition != null && pageIndex != null && pageSize != null) {
 
             PageHelper.startPage(pageIndex, pageSize);
+<<<<<<< HEAD
             List<UserProductMap> userProductMaps = userProductMapDao.queryUserProductMapAllList(userProductCondition);
             PageInfo<UserProductMap> productMapPageInfo = new PageInfo<>(userProductMaps,5);
+=======
+            List<UserProductMap> userProductMaps = userProductMapDao.queryUserProductMapList(userProductCondition, pageIndex, pageSize);
+            PageInfo<UserProductMap> productMapPageInfo = new PageInfo<>(userProductMaps);
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 
             UserProductMapExecution userProductMapExecution = new UserProductMapExecution();
             userProductMapExecution.setUserProductMapPageInfo(productMapPageInfo);

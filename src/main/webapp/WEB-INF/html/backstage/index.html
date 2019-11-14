@@ -183,7 +183,12 @@
             </div>
 
             <div class="row">
+<<<<<<< HEAD
                 <div class="col-lg-12 mb-4">
+=======
+                <div class="col-lg-8 mb-4">
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
                     <div class="card h-100">
                         <div class="card-body  table-responsive p-0">
                             <table class="table  m-0">
@@ -201,6 +206,7 @@
                                 </tbody>
                             </table>
                         </div>
+<<<<<<< HEAD
                     </div>
                     <nav aria-label="Page navigation example">
                         <div class="form-inline float-left">
@@ -213,6 +219,29 @@
 
                         </ul>
                     </nav>
+=======
+                        <nav aria-label="Page navigation example">
+                            <div class="form-inline float-left">
+                                <label class="my-1 mr-2 d-none d-md-block">一共有 <span
+                                        class="page-total-page"></span> 页,当前是 <span class="page-current-nums"></span> 页</label>
+                            </div>
+
+                            <ul class="pagination mt-3 justify-content-end">
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Money Analysis</div>
+                        <div class="card-body">
+                            <canvas id="myChart" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
                 </div>
             </div>
         </div>
@@ -316,6 +345,10 @@
 </div>
 
 
+<<<<<<< HEAD
+=======
+<script src="https://cdn.bootcss.com/Chart.js/2.6.0/Chart.min.js"></script>
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 <script src="../resources/assets/js/lib/moment.min.js"></script>
 <script src="../resources/assets/js/lib/jquery.min.js"></script>
 <script src="../resources/assets/js/lib/popper.min.js"></script>
@@ -332,6 +365,56 @@
 <script src="../resources/assets/js/shop/changepw.js"></script>
 
 
+<<<<<<< HEAD
+=======
+<script>
+
+    $(function () {
+
+    });
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['周一', '周二', '', 'Green', 'Purple'],
+            datasets: [{
+                label: '商品日销量',
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+</script>
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 </body>
 
 </html>

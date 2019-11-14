@@ -10,7 +10,11 @@
 
         <association column="user_id" javaType="com.changyue.o2o.entity.PersonInfo" property="user">
             <id column="user_id" property="userId"/>
+<<<<<<< HEAD
             <result column="user_name" property="name"/>
+=======
+            <result column="name" property="name"/>
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         </association>
 
         <association column="product_id" javaType="com.changyue.o2o.entity.Product" property="product">
@@ -25,7 +29,11 @@
 
         <association column="operator_id" javaType="com.changyue.o2o.entity.PersonInfo" property="operator">
             <id column="user_Id" property="userId"/>
+<<<<<<< HEAD
             <result column="opertor_name" property="name"/>
+=======
+            <result column="name" property="name"/>
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         </association>
 
     </resultMap>
@@ -36,8 +44,13 @@
         upm.user_product_id,
         upm.create_time,
         upm.point,
+<<<<<<< HEAD
         buyer.user_id as user_id,
         buyer.name as user_name,
+=======
+        buyer.user_id,
+        buyer.name,
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         s.shop_id,
         s.shop_name,
         p.product_id,

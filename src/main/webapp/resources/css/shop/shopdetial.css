@@ -18,7 +18,11 @@
     z-index: 2;
 }
 
+<<<<<<< HEAD
 .fa-gift {
+=======
+.fa-share {
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
     right: 10px;
 }
 
@@ -26,11 +30,18 @@
     right: 40px;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 .fa-chevron-left {
     left: 10px;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 .top-nav::before {
     content: "";
     position: absolute;

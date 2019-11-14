@@ -49,11 +49,14 @@ public class ShopAdminPageController {
         return "backstage/shoppage";
     }
 
+<<<<<<< HEAD
     @RequestMapping(value = "/pointpage")
     public String pointPage() {
         return "backstage/pointpage";
     }
 
+=======
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 
 }
 

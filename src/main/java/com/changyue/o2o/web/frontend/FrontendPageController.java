@@ -17,8 +17,14 @@ public class FrontendPageController {
     /**
      * 前端商铺列表
      */
+<<<<<<< HEAD
     @GetMapping(value = "/shoplist")
     public String shopList() {
+=======
+    @GetMapping(value = "shoplist")
+    public String shopList() {
+        System.out.println("come in");
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         return "frontend/frontendshoplist";
     }
 
@@ -51,6 +57,7 @@ public class FrontendPageController {
         return "frontend/productdetail";
     }
 
+<<<<<<< HEAD
     /**
      * 奖品详情页
      */
@@ -76,4 +83,6 @@ public class FrontendPageController {
     }
 
 
+=======
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 }

@@ -17,7 +17,11 @@
     <div class="top-nav">
         <i class="fas fa-chevron-left" onclick="window.location.href='/o2o/frontend/shoplist'"></i>
         <i class="fas fa-search"></i>
+<<<<<<< HEAD
         <i class="fas fa-gift"></i>
+=======
+        <i class="fas fa-share"></i>
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         <img src="" alt="" class="shop-img">
     </div>
     <div class="top-shop-info text-center">
@@ -117,6 +121,10 @@
             }
         });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         $(document).on("click", ".product-category", function () {
             productCategoryId = $(this).data("categoryId");
             showProduct();
@@ -128,11 +136,15 @@
 
         $(document).on("click", ".proc-content", function () {
             window.location.href = '/o2o/frontend/productdetail?productId=' + $(this).data("id");
+<<<<<<< HEAD
         });
 
         $(".fa-gift").click(function () {
             window.location.href = '/o2o/frontend/awardlist?shopId=' + shopId;
         });
+=======
+        })
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 
     });
 

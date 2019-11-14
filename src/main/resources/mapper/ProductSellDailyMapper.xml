@@ -46,7 +46,11 @@
                 and date_format(psd.create_time,'%Y-%m-%d') &gt;= date_format(#{beginTime},'%Y-%m-%d')
             </if>
             <if test="beginTime==null and endTime !=null">
+<<<<<<< HEAD
                 and date_format(psd.create_time,'%Y-%m-%d') &lt;= date_format(#{endTime},'%Y-%m-%d')
+=======
+                and date_format(psd.create_time,'%Y-%m-%d') &lt;= date_format(#{beginTime},'%Y-%m-%d')
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
             </if>
         </where>
         order by psd.product_id,psd.create_time

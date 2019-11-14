@@ -13,7 +13,11 @@
         <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime"/>
         <association column="user_id" jdbcType="INTEGER" property="user" javaType="com.changyue.o2o.entity.PersonInfo">
             <id column="user_id" property="userId"/>
+<<<<<<< HEAD
             <result column="user_name" property="name"/>
+=======
+            <result column="user_name" property="userName"/>
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         </association>
         <association column="award_id" jdbcType="INTEGER" property="award" javaType="com.changyue.o2o.entity.Award">
             <id column="award_id" property="awardId"/>
@@ -25,8 +29,13 @@
         </association>
         <association column="operator_id" jdbcType="INTEGER" property="operator"
                      javaType="com.changyue.o2o.entity.PersonInfo">
+<<<<<<< HEAD
             <id column="operator_id" property="userId"/>
             <result column="opertor_name" property="name"/>
+=======
+            <id column="user_id" property="userId"/>
+            <result column="user_name" property="userName"/>
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         </association>
     </resultMap>
 
@@ -35,8 +44,13 @@
         uam.create_time,
         uam.used_status,
         uam.point,
+<<<<<<< HEAD
         buyer.user_id as user_id,
         buyer.name as user_name,
+=======
+        buyer.user_id,
+        buyer.name,
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         s.shop_id,
         s.shop_name,
         a.award_id,

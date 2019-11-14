@@ -16,8 +16,15 @@ $(function () {
             type: "get",
             dataType: "json",
             success: function (data) {
+<<<<<<< HEAD
                 if (data.success) {
                     handleList(data.shopPageInfo);
+=======
+                console.info(data);
+                if (data.success) {
+                    handleList(data.shopPageInfo);
+                    //handleUser(data.user);
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
                 }
             }
         });
@@ -112,4 +119,8 @@ $(function () {
         sendShopIdToServer($(this).data("id"));
     });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 });

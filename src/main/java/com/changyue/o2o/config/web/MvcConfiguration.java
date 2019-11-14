@@ -49,8 +49,16 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
        /* registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/resources/");
         registry.addResourceHandler("/resources/assets/js/**").addResourceLocations("/resources/assets/js/");
         registry.addResourceHandler("/resources/assets/css/**").addResourceLocations("/resources/assets/css/");*/
+<<<<<<< HEAD
         //spring boot 内置tomcat 不能设置server.xml配置docBase 图片的路径
         registry.addResourceHandler("/upload/**").addResourceLocations("file:/Users/baidu/work/image/upload/");
+=======
+
+        //spring boot 内置tomcat 不能设置server.xml配置docBase 图片的路径
+
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:" + PathUtils.getImgBasePath() + "/upload/");
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
     }
 
     /**
@@ -63,6 +71,10 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         configurer.enable();
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
     /**
      * 创建视图解析器
      *
@@ -150,7 +162,10 @@ public class MvcConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         permissionInterceptor.excludePathPatterns("/shopadmin/getuser");
         //二维码
         permissionInterceptor.excludePathPatterns("/shopadmin/addshopauthmap");
+<<<<<<< HEAD
         permissionInterceptor.excludePathPatterns("/shopadmin/listusershopmapsbyshop");
+=======
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 
 
     }

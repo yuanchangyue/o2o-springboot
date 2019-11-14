@@ -127,11 +127,14 @@
             <artifactId>pagehelper</artifactId>
             <version>5.0.0</version>
         </dependency>
+<<<<<<< HEAD
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-autoconfigure</artifactId>
             <version>1.2.3</version>
         </dependency>
+=======
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
 
         <!-- google 二维码 -->
         <dependency>
@@ -147,6 +150,10 @@
             <version>2.8.5</version>
         </dependency>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
         <!--定时调度-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

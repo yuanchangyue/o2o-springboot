@@ -648,7 +648,11 @@ public class JedisUtil {
         /**
          * 添加对应关系，如果对应关系已存在，则覆盖
          *
+<<<<<<< HEAD
          * @param key
+=======
+         * @param  key
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 状态，成功返回OK
          */
         public String hmset(String key, Map<String, String> map) {
@@ -694,7 +698,11 @@ public class JedisUtil {
         /**
          * 根据key获取记录
          *
+<<<<<<< HEAD
          * @param key
+=======
+         * @param  key
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 值
          */
         public byte[] get(byte[] key) {
@@ -711,9 +719,15 @@ public class JedisUtil {
          * <p>
          * key
          *
+<<<<<<< HEAD
          * @param seconds 过期时间，以秒为单位
          *                <p>
          *                value
+=======
+         * @param  seconds 过期时间，以秒为单位
+         *            <p>
+         *            value
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return String 操作状态
          */
         public String setEx(String key, int seconds, String value) {
@@ -789,7 +803,11 @@ public class JedisUtil {
         /**
          * 添加记录,如果记录已存在将覆盖原有的value
          *
+<<<<<<< HEAD
          * @param key
+=======
+         * @param  key
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @param value
          * @return 状态码
          */
@@ -808,8 +826,14 @@ public class JedisUtil {
          * <p>
          * key
          *
+<<<<<<< HEAD
          * @param offset <p>
          *               value
+=======
+         * @param  offset
+         *             <p>
+         *             value
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return long value的长度
          */
         public long setRange(String key, long offset, String value) {
@@ -842,7 +866,11 @@ public class JedisUtil {
          * <p>
          * key
          *
+<<<<<<< HEAD
          * @param number 要减去的值
+=======
+         * @param  number 要减去的值
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return long 减指定值后的值
          */
         public long decrBy(String key, long number) {
@@ -859,7 +887,11 @@ public class JedisUtil {
          * <p>
          * key
          *
+<<<<<<< HEAD
          * @param number 要减去的值
+=======
+         * @param  number 要减去的值
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return long 相加后的值
          */
         public long incrBy(String key, long number) {
@@ -875,8 +907,13 @@ public class JedisUtil {
          * <p>
          * key
          *
+<<<<<<< HEAD
          * @param startOffset 开始位置(包含)
          * @param endOffset   结束位置(包含)
+=======
+         * @param  startOffset 开始位置(包含)
+         * @param  endOffset 结束位置(包含)
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return String 截取的值
          */
         public String getrange(String key, long startOffset, long endOffset) {
@@ -968,7 +1005,11 @@ public class JedisUtil {
         /**
          * List长度
          *
+<<<<<<< HEAD
          * @param key
+=======
+         * @param  key
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 长度
          */
         public long llen(byte[] key) {
@@ -982,9 +1023,15 @@ public class JedisUtil {
         /**
          * 覆盖操作,将覆盖List中指定位置的值
          *
+<<<<<<< HEAD
          * @param key
          * @param index 位置
          * @param value 值
+=======
+         * @param  key
+         * @param  index 位置
+         * @param  value 值
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 状态码
          */
         public String lset(byte[] key, int index, byte[] value) {
@@ -998,9 +1045,15 @@ public class JedisUtil {
          * 覆盖操作,将覆盖List中指定位置的值
          *
          * @param key
+<<<<<<< HEAD
          * @param index 位置
          *              <p>
          *              value 值
+=======
+         * @param  index 位置
+         *            <p>
+         *            value 值
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 状态码
          */
         public String lset(String key, int index, String value) {
@@ -1011,10 +1064,18 @@ public class JedisUtil {
         /**
          * 在value的相对位置插入记录
          *
+<<<<<<< HEAD
          * @param key <p>
          *            pivot 相对位置的内容
          *            <p>
          *            value 插入的内容
+=======
+         * @param key
+         *                      <p>
+         *                      pivot 相对位置的内容
+         *                      <p>
+         *                      value 插入的内容
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 记录总数
          */
         public long linsert(String key, LIST_POSITION where, String pivot,
@@ -1029,8 +1090,13 @@ public class JedisUtil {
          * <p>
          * key
          *
+<<<<<<< HEAD
          * @param pivot 相对位置的内容
          * @param value 插入的内容
+=======
+         * @param  pivot 相对位置的内容
+         * @param  value 插入的内容
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 记录总数
          */
         public long linsert(byte[] key, LIST_POSITION where, byte[] pivot,
@@ -1047,7 +1113,11 @@ public class JedisUtil {
          * <p>
          * key
          *
+<<<<<<< HEAD
          * @param index 位置
+=======
+         * @param  index 位置
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 值
          **/
         public String lindex(String key, int index) {
@@ -1057,8 +1127,13 @@ public class JedisUtil {
         /**
          * 获取List中指定位置的值
          *
+<<<<<<< HEAD
          * @param key
          * @param index 位置
+=======
+         * @param  key
+         * @param  index 位置
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 值
          **/
         public byte[] lindex(byte[] key, int index) {
@@ -1097,7 +1172,11 @@ public class JedisUtil {
         /**
          * 将List中最后第一条记录移出List
          *
+<<<<<<< HEAD
          * @param key
+=======
+         * @param  key
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
          * @return 移出的记录
          */
         public String rpop(String key) {

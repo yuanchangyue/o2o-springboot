@@ -7,7 +7,11 @@ function changeVerityCode(img) {
 }
 
 function handleUser(user) {
+<<<<<<< HEAD
     var personalInfoHtml = '<img id="userLoginDropdownImg" src="' + user.profileImg + '" class="mr-2 rounded" width="28">' + user.name;
+=======
+    var personalInfoHtml = '<img id="userLoginDropdownImg" src="'+user.profileImg + '" class="mr-2 rounded" width="28">' + user.name;
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
     $("#userLoginDropdown").html(personalInfoHtml);
 }
 
@@ -106,7 +110,11 @@ function showDropdownMenuPersonal() {
         '   data-target="#reset-pw" data-usertype="2">修改密码</a>' +
         '<a class="dropdown-item" target="_blank">帮助&支持</a>' +
         '<div class="dropdown-divider"></div>' +
+<<<<<<< HEAD
         '<a id="login-out" usertype="2" class="dropdown-item">注销</a>';
+=======
+        '<a id="login-out" usertype="2" class="dropdown-item" href="sign-in.html">注销</a>';
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
     $("#dropdown-menu-personal").html(dropdownMenuPersonalHtml);
 }
 
@@ -121,6 +129,7 @@ function getConetxtPath() {
 }
 
 
+<<<<<<< HEAD
 /*修改footer*/
 $(".footer").html(' <p class="text-muted m-0">\n' +
     '    <small class="float-right">Made with <span\n' +
@@ -142,3 +151,5 @@ function timeStamp2String(time) {
     var second = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
     return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
 }
+=======
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5

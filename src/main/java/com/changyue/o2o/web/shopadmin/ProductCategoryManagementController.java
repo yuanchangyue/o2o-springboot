@@ -28,7 +28,11 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/shopadmin")
 public class ProductCategoryManagementController {
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 4084400726203979b8a84d9e1a5b40f88ba6a7c5
     @Autowired
     private ProductCategoryService productCategoryService;
 
