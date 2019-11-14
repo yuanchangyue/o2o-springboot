@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.dao.AwardDaoTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.813 s <<< FAILURE! - in com.changyue.o2o.dao.AwardDaoTest
+testDelete(com.changyue.o2o.dao.AwardDaoTest)  Time elapsed: 0.203 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<1>
+	at com.changyue.o2o.dao.AwardDaoTest.testDelete(AwardDaoTest.java:80)
+

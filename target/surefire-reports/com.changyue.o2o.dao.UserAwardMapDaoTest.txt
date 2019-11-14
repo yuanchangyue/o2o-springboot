@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.dao.UserAwardMapDaoTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.612 s <<< FAILURE! - in com.changyue.o2o.dao.UserAwardMapDaoTest
+testQueryUserAwardMapList(com.changyue.o2o.dao.UserAwardMapDaoTest)  Time elapsed: 0.188 s  <<< FAILURE!
+java.lang.AssertionError: expected:<6> but was:<4>
+	at com.changyue.o2o.dao.UserAwardMapDaoTest.testQueryUserAwardMapList(UserAwardMapDaoTest.java:59)
+

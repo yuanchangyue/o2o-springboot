@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.dao.LocalAuthDaoTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 2, Skipped: 0, Time elapsed: 0.828 s <<< FAILURE! - in com.changyue.o2o.dao.LocalAuthDaoTest
+testAInsertLocalAuth(com.changyue.o2o.dao.LocalAuthDaoTest)  Time elapsed: 0.25 s  <<< ERROR!
+org.springframework.dao.DuplicateKeyException: 
+
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '袁XX' for key 'uk_local_profile'
+### The error may exist in file [E:\o2o-springboot-master\o2o-springboot-master\target\classes\mapper\LocalAuthMapper.xml]
+### The error may involve com.changyue.o2o.dao.LocalAuthDao.insertLocalAuth-Inline
+### The error occurred while setting parameters
+### SQL: insert into tb_local_auth(user_name, password, user_id, create_time, last_edit_time)         values (?, ?, ?, ?, ?)
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '袁XX' for key 'uk_local_profile'
+; Duplicate entry '袁XX' for key 'uk_local_profile'; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '袁XX' for key 'uk_local_profile'
+	at com.changyue.o2o.dao.LocalAuthDaoTest.testAInsertLocalAuth(LocalAuthDaoTest.java:44)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '袁XX' for key 'uk_local_profile'
+	at com.changyue.o2o.dao.LocalAuthDaoTest.testAInsertLocalAuth(LocalAuthDaoTest.java:44)
+
+testBQueryLocalAuthByUserAndPw(com.changyue.o2o.dao.LocalAuthDaoTest)  Time elapsed: 0.125 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.changyue.o2o.dao.LocalAuthDaoTest.testBQueryLocalAuthByUserAndPw(LocalAuthDaoTest.java:58)
+
+testDUpdateLocalAuth(com.changyue.o2o.dao.LocalAuthDaoTest)  Time elapsed: 0.172 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at com.changyue.o2o.dao.LocalAuthDaoTest.testDUpdateLocalAuth(LocalAuthDaoTest.java:64)
+

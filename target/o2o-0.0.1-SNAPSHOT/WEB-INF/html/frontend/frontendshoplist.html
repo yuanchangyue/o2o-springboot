@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商铺列表</title>
+    <link rel="stylesheet" href="../resources/css/bootstrap.css">
+    <link rel="stylesheet" href="../resources/css/shop/frontshoplist.css">
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="nav-bar">
+
+    <div class="top-nav">
+        <i class="fas fa-chevron-left" onclick="window.location.href='/o2o/frontend/index'"></i>
+        <h4>商铺列表</h4>
+    </div>
+
+    <div class="search-box">
+        <form>
+            <input type="text" id="search-input" placeholder="输入关键字">
+        </form>
+    </div>
+
+    <div class="category-box">
+        <ul id="category-list">
+            <li id="first-category" class="active-category"><a href="">全部</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="choice-warp">
+
+    <label for="checkbox-area" id="checkbox-label">筛选
+        <i class="fas fa-filter" style="font-size: 10px;"></i></label>
+    <input type="checkbox" value="" id="checkbox-area">
+
+    <div class="condition-box">
+        <div class="area-box">
+            <p class="condition-title">区域选择：</p>
+            <ul id="area-list">
+
+            </ul>
+        </div>
+
+        <div class="btn-box">
+            <a class="btn-cancel" href="">取消</a>
+            <a class="btn-submit" href="">确定</a>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="content-warp" id="content-warp">
+
+</div>
+
+
+<script src="../resources/assets/js/lib/jquery.min.js"></script>
+<script src="../resources/assets/js/shop/common.js"></script>
+<script src="../resources/assets/js/bootstrap/bootstrap.min.js"></script>
+
+<script>
+    $(function () {
+
+        var pageIndex = 1;
+        var pageSize = 999;
+        var shopName = "";
+        var shopCategoryId = "";
+        var areaId = "";
+        var parentId = getQueryString("parentId");
+
+        var shopList = "/o2o/frontend/listshops";
+        var baseInfo = "/o2o/frontend/listshopspageinfo?parentId=" + parentId;
+
+        /**
+         * 获得nav bar中的内容,商铺类别,区域信息等
+         */
+        function getNavBar() {
+            $.getJSON(baseInfo, function (data) {
+
+                if (data.success) {
+
+                    console.info(data);
+                    console.info(baseInfo);
+
+                    var areHtml = "";
+                    var categoryHtml = "";
+
+                    $.map(data.areaList, function (item, index) {
+                        areHtml += '<li><a href="#" class="area-btn" data-area-id="' + item.areaId + '" >' + item.areaName + '</a></li>';
+                    });
+
+                    $("#area-list").html(areHtml);
+
+                    $.map(data.shopCategoryList, function (item, index) {
+                        categoryHtml += ' <li class="shop-category-btn"><a  data-category-id="' + item.shopCategoryId + '">' + item.shopCategoryName + '</a></li>';
+                    });
+
+                    $("#first-category").after(categoryHtml);
+
+                }
+
+            });
+        }
+
+
+        /**
+         * 展示出商铺列表
+         * @param pageSize
+         * @param pageIndex
+         */
+        function showShop(pageSize, pageIndex) {
+
+            var shopListUrl = shopList + "?pageIndex=" + pageIndex + "&pageSize=" +
+                pageSize + "&shopName=" + shopName + "&areaId=" + areaId + "&shopCategoryId="
+                + shopCategoryId + "&parentId=" + parentId;
+
+            $.getJSON(shopListUrl, function (data) {
+                if (data.success) {
+
+                    /*      console.info(shopListUrl);
+                             console.info(data);*/
+
+                    var shopHtml = "";
+
+                    $.map(data.shopPageInfo.list, function (item, index) {
+                        shopHtml +=
+                            '<div class="shop-box" data-shop-id="' + item.shopId + '">' +
+                            '        <div class="login-box">' +
+                            '            <img src="' + getConetxtPath() + item.shopImg + '" alt="">' +
+                            '        </div>' +
+                            '        <div class="shop-info">' +
+                            '            <h3 class="shop-name ">' + item.shopName + '</h3>' +
+                            '            <span class="shop-des ">' + item.shopDesc + '</span>' +
+                            '        </div>' +
+                            '</div>';
+
+                    });
+
+                    $("#content-warp").html(shopHtml);
+                }
+
+            });
+        }
+
+        getNavBar();
+        showShop(pageSize, pageIndex);
+
+        $(".category-box").on("click", ".shop-category-btn", function (e) {
+            if (parentId) {
+                shopCategoryId = e.target.dataset.categoryId;
+
+                if ($(this).hasClass("active-category")) {
+                    $(this).siblings().removeClass("active-category");
+                    shopCategoryId = "";
+                } else {
+                    $(this).addClass("active-category").siblings().removeClass("active-category")
+                }
+
+                $("#content-warp").empty();
+                pageIndex = 1;
+                showShop(pageSize, pageIndex);
+            } else {
+                parentId = e.target.dataset.categoryId;
+                if ($(this).hasClass("active-category")) {
+                    $(this).removeClass("active-category");
+                    parentId = "";
+                } else {
+                    $(this).addClass("active-category").siblings().removeClass("active-category")
+                }
+
+                $("#content-warp").empty();
+                pageIndex = 1;
+                showShop(pageSize, pageIndex);
+                parentId = "";
+
+            }
+        });
+
+        $(".search-box").on("input", function (e) {
+            shopName = e.target.value;
+            $("#content-warp").empty();
+            pageIndex = 1;
+            showShop(pageSize, pageIndex);
+        });
+
+        $("#area-list").on("click", ".area-btn", function (e) {
+            areaId = e.target.dataset.areaId;
+            $("#content-warp").empty();
+            $("#checkbox-label").click();
+            pageIndex = 1;
+            showShop(pageSize, pageIndex);
+        });
+
+        $(document).on("click", ".shop-box", function (e) {
+            var shopId = $(this).data("shop-id");
+            window.location.href = "/o2o/frontend/shopdetail?shopId=" + shopId;
+        })
+
+    });
+</script>
+
+</body>
+</html>

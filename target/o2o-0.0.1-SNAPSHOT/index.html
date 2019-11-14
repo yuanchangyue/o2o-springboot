@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="resources/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/css/index.css">
+    <link rel="stylesheet" href="resources/css/clear.css">
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.css" rel="stylesheet">
+</head>
+
+<style>
+    .shop-card {
+        margin: 10px;
+        height: 190px;
+        padding: 8px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    }
+
+    .shop-card .list-img {
+        display: flex;
+    }
+
+    .shop-card .list-img li {
+        padding-right: 8px;
+    }
+
+    .shop-card .shop-name {
+        color: #333;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .shop-card .shop-description {
+        color: #666;
+        font-size: 12px;
+    }
+
+</style>
+
+<body>
+
+<div class="nav-bar">
+
+    <!--<h4 style="text-align: center ;color: #0085ff">首页</h4>-->
+
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="搜索"
+               onclick="window.location.href='/o2o/frontend/shoplist'">
+    </div>
+
+    <!--轮播图-->
+    <div id="carousel-generic" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-generic" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" id="index-banner">
+
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-generic" role="button" data-slide="prev">
+            <span aria-hidden="true" class="fas fa-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-generic" role="button" data-slide="next">
+            <span aria-hidden="true" class="fas fa-chevron-right"> </span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="shop-warp">
+
+    <div class="shop-category-wrap container">
+        <div class="row container center-block" id="index-category">
+
+        </div>
+    </div>
+
+    <div class="shop-list-warp">
+
+    </div>
+
+</div>
+
+<!--<div class="footer nav-bar navbar-fixed-bottom navbar-default">
+    <div class="col-md-6 col-xs-6 text-center"><a href="#" class="navbar-link">主页</a></div>
+    <div class="col-md-6 col-xs-6 text-center"><a href="#" class="navbar-link">个人中心</a></div>
+</div>-->
+
+<script src="resources/js/commons/jQuery.min.js"></script>
+<script src="resources/js/bootstrap.js"></script>
+<script src="resources/js/commons/carousel.js"></script>
+
+<script src="resources/js/shop/index.js"></script>
+
+
+</body>
+</html>

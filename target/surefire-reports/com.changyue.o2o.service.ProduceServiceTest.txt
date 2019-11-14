@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.service.ProduceServiceTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.298 s <<< FAILURE! - in com.changyue.o2o.service.ProduceServiceTest
+testModifyProduct(com.changyue.o2o.service.ProduceServiceTest)  Time elapsed: 0 s  <<< ERROR!
+java.io.FileNotFoundException: C:\Users\Administrator\Desktop\a.jpg (系统找不到指定的路径。)
+	at com.changyue.o2o.service.ProduceServiceTest.testModifyProduct(ProduceServiceTest.java:101)
+
+testAddProduct(com.changyue.o2o.service.ProduceServiceTest)  Time elapsed: 0 s  <<< ERROR!
+java.io.FileNotFoundException: C:\Users\Administrator\Desktop\samuel.jpg (系统找不到指定的路径。)
+	at com.changyue.o2o.service.ProduceServiceTest.testAddProduct(ProduceServiceTest.java:62)
+

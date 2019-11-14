@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.changyue.o2o.dao.UserShopMapDao">
+
+    <resultMap id="BaseResultMap" type="com.changyue.o2o.entity.UserShopMap">
+        <id column="user_shop_id" jdbcType="INTEGER" property="userShopId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="point" jdbcType="INTEGER" property="point"/>
+        <association column="user_id" jdbcType="INTEGER" property="user" javaType="com.changyue.o2o.entity.PersonInfo">
+            <id column="user_id" property="userId"/>
+            <result column="name" property="name"/>
+            <result column="profile_img" property="profileImg"/>
+        </association>
+        <association column="shop_id" jdbcType="INTEGER" property="shop" javaType="com.changyue.o2o.entity.Shop">
+            <id column="shop_id" property="shopId"/>
+            <result column="shop_name" property="shopName"/>
+        </association>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        usm.user_shop_id,
+        usm.create_time,
+        usm.point,
+        buyer.user_id,
+        buyer.name,
+        buyer.profile_img,
+        s.shop_id,
+        s.shop_name
+    </sql>
+
+    <select id="selectUserShopMapList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_user_shop_map usm,tb_shop s,tb_person_info buyer
+        <where>
+            usm.user_id = buyer.user_id and
+            usm.shop_id = s.shop_id
+            <!-- 顾客信息 -->
+            <if test="userShopCondition.user!=null and userShopCondition.user.userId!=null">and
+                usm.user_id=#{userShopCondition.user.userId}
+            </if>
+            <!-- 商铺 -->
+            <if test="userShopCondition.shop!=null and userShopCondition.shop.shopId!=null">and
+                usm.shop_id=#{userShopCondition.shop.shopId}
+            </if>
+            <!-- 顾客的姓名 -->
+            <if test="userShopCondition.user!=null and userShopCondition.user.name!=null">and
+                buyer.name like '%${userShopCondition.user.name}%'
+            </if>
+            <!-- 商铺名称 -->
+            <if test="userShopCondition.shop!=null and userShopCondition.shop.shopName!=null">and
+                usm.shop_id=#{userShopCondition.shop.shopName}
+            </if>
+            <if test="userShopCondition.createTime!=null">
+                and usm.create_time > #{userShopCondition.createTime}
+            </if>
+        </where>
+        limit #{rowIndex},#{pageSize}
+    </select>
+
+    <select id="selectUserShopMapAllList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_user_shop_map usm,tb_shop s,tb_person_info buyer
+        <where>
+            usm.user_id = buyer.user_id and
+            usm.shop_id = s.shop_id
+            <!-- 顾客信息 -->
+            <if test="userShopCondition.user!=null and userShopCondition.user.userId!=null">and
+                usm.user_id=#{userShopCondition.user.userId}
+            </if>
+            <!-- 商铺 -->
+            <if test="userShopCondition.shop!=null and userShopCondition.shop.shopId!=null">and
+                usm.shop_id=#{userShopCondition.shop.shopId}
+            </if>
+            <!-- 顾客的姓名 -->
+            <if test="userShopCondition.user!=null and userShopCondition.user.name!=null">and
+                buyer.name like '%${userShopCondition.user.name}%'
+            </if>
+            <!-- 商铺名称 -->
+            <if test="userShopCondition.shop!=null and userShopCondition.shop.shopName!=null">and
+                usm.shop_id=#{userShopCondition.shop.shopName}
+            </if>
+            <if test="userShopCondition.createTime!=null">
+                and usm.create_time > #{userShopCondition.createTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectUserShopMapById" parameterType="long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_user_shop_map usm,tb_shop s,tb_person_info buyer
+        where
+        usm.user_id = buyer.user_id and
+        usm.shop_id = s.shop_id and
+        usm.user_id = #{userId} and
+        usm.shop_id = #{shopId}
+    </select>
+
+    <insert id="insertUserShopMap" parameterType="com.changyue.o2o.entity.UserShopMap" keyColumn="user_shop_id"
+            useGeneratedKeys="true" keyProperty="userShopId">
+            insert into tb_user_shop_map (user_id,shop_id,create_time,point)
+            values (#{user.userId}, #{shop.shopId},#{createTime}, #{point})
+     </insert>
+
+    <update id="updateUserShopMap" parameterType="com.changyue.o2o.entity.UserShopMap">
+        update tb_user_shop_map
+        <set>
+            <if test="point != null">
+                point = #{point,jdbcType=INTEGER},
+            </if>
+        </set>
+        where user_id = #{user.userId} and shop_id = #{shop.shopId}
+    </update>
+
+</mapper>

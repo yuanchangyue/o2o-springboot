@@ -1,0 +1,14 @@
+.mb {
+    padding: .5rem;
+}
+
+.div-h {
+    display: inline-block;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.div-h a {
+    color: #ffffff !important;
+}

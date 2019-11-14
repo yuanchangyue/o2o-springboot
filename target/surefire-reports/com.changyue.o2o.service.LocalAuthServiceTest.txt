@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.service.LocalAuthServiceTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 2, Skipped: 0, Time elapsed: 1.094 s <<< FAILURE! - in com.changyue.o2o.service.LocalAuthServiceTest
+testDUpdateLocalAuth(com.changyue.o2o.service.LocalAuthServiceTest)  Time elapsed: 0.484 s  <<< ERROR!
+com.changyue.o2o.exceptions.LocalAuthOperationException: 更新密码失败
+	at com.changyue.o2o.service.LocalAuthServiceTest.testDUpdateLocalAuth(LocalAuthServiceTest.java:62)
+
+testBQueryLocalAuthByUserAndPw(com.changyue.o2o.service.LocalAuthServiceTest)  Time elapsed: 0.094 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.changyue.o2o.service.LocalAuthServiceTest.testBQueryLocalAuthByUserAndPw(LocalAuthServiceTest.java:57)
+
+testAInsertLocalAuth(com.changyue.o2o.service.LocalAuthServiceTest)  Time elapsed: 0.422 s  <<< FAILURE!
+java.lang.AssertionError: expected:<-4001> but was:<-4000>
+	at com.changyue.o2o.service.LocalAuthServiceTest.testAInsertLocalAuth(LocalAuthServiceTest.java:43)
+

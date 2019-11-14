@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.dao.ShopDaoTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.86 s - in com.changyue.o2o.dao.ShopDaoTest

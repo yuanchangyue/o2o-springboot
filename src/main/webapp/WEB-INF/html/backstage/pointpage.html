@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+
+<!-- source http://www.scnoob.com More templates http://www.scnoob.com/moban.html -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="Cosmo - Responsive Dashboard Admin Template">
+    <meta name="author" content="Akshay Kumar">
+    <link rel="icon" href="../resources/assets/images/favicon.ico">
+    <link rel="stylesheet" href="../resources/assets/css/basestyle/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.css" rel="stylesheet">
+
+    <title>商铺管理</title>
+</head>
+<body>
+
+<!-- Pre Loader-->
+<div class="loader-wrapper">
+    <div class="spinner">
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="length" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+        </svg>
+    </div>
+</div>
+<!-- Pre Loader-->
+
+<section class="wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand m-0 py-2 brand-title" href="#">o2o商铺管理后台</a>
+            <span></span>
+            <a class="navbar-brand py-2 material-icons toggle-sidebar" href="#">menu</a>
+        </nav>
+
+        <nav class="navigation">
+            <ul>
+                <li><a href="/o2o/shopadmin/shoplist" title="Dashboard">
+                    <span class="nav-icon material-icons">keyboard_return</span>
+                    返回商铺列表</a></li>
+                <li><a href="/o2o/shopadmin/shoppage" title="Dashboard"><span
+                        class="nav-icon material-icons">store</span>
+                    商铺管理</a></li>
+                <li class="active"><a href="#" title="Theme Settings"><span
+                        class="nav-icon material-icons ">color_lens</span>
+                    奖品积分管理</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!--RIGHT CONTENT AREA-->
+    <div class="content-area">
+
+        <header class="header sticky-top">
+            <nav class="navbar navbar-light bg-white px-sm-4 ">
+                <a class="navbar-brand py-2 d-md-none  m-0 material-icons toggle-sidebar" href="#">menu</a>
+                <ul class="navbar-nav flex-row ml-auto">
+                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Switch Application">
+                        <a data-toggle="modal" href="#" data-target="#switchApp" class="nav-link"><span
+                                class="material-icons align-middle">apps</span></a>
+                    </li>
+                    <li class="nav-item notification">
+                        <a href="#" id="notificationDropdown" data-toggle="dropdown" class="nav-link"><span
+                                class="material-icons align-middle">notifications_none</span></a>
+                        <div class="dropdown-menu p-0 dropdown-lg notificationDropdown dropdown-menu-right"
+                             aria-labelledby="notificationDropdown">
+
+                            <a class="dropdown-item py-3 border-bottom" href="#">
+                                <p class="text-muted mb-1">
+                                    <small>John Doe Application</small>
+                                </p>
+                                <div class="progress" style="height:8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
+                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item py-3 border-bottom" href="#">
+                                <p class="text-muted mb-1">
+                                    <small>Akshay Application</small>
+                                </p>
+                                <div class="progress" style="height:8px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"
+                                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item whitespace-normal py-3 border-bottom" href="#">
+                                <div class="media">
+                                    <img class="mr-3 rounded" width="26" src="../resources/assets/images/user.png">
+                                    <div class="media-body">
+                                        <h6 class="m-0 weight-400">Media heading</h6>
+                                        <small class="text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel
+                                            metus scelerisque ante.
+                                        </small>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a class="dropdown-item py-3 border-bottom" href="#">
+                                <p class="text-muted mb-1">
+                                    <small>Uploading Documents</small>
+                                </p>
+                                <div class="progress" style="height:8px;">
+                                    <div class="progress-bar-animated bg-primary progress-bar-striped"
+                                         role="progressbar" style="width: 40%" aria-valuenow="10" aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item py-3 border-bottom" href="#">
+                                <span class="badge badge-pill badge-danger mr-2">Warning</span>
+                                <small
+                                        class="text-muted">Somthing went wrong !
+                                </small>
+                            </a>
+                            <button type="button" class="btn btn-light btn-sm btn-block">View All</button>
+                        </div>
+                    </li>
+                    <li class="nav-item ml-sm-3 dropdown">
+                        <a href="#" id="userLoginDropdown" data-toggle="dropdown"
+                           class="nav-link weight-400 dropdown-toggle"></a>
+                        <div class="dropdown-menu dropdown-menu-right"
+                             aria-labelledby="userLoginDropdown" id="dropdown-menu-personal">
+
+                        </div>
+                    </li>
+
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content-wrapper">
+
+            <div class="row page-tilte align-items-center">
+                <div class="col-md-auto">
+                    <a href="#" class="mt-3 d-md-none float-right toggle-controls"><span class="material-icons">keyboard_arrow_down</span></a>
+                    <h1 class="weight-300 h3 title ">商铺奖品管理</h1>
+                    <p class="text-muted m-0 desc">以下可以管理商铺的奖品和查看商店的奖品的积分记录</p>
+                </div>
+                <div class="col controls-wrapper mt-3 mt-md-0 d-none d-md-block ">
+                    <div class="controls d-flex justify-content-center justify-content-md-end">
+                        <input type="text" id="input-search" class="form-control date-rage width-260">
+                        <button type="button" class="btn btn-danger btn-search">搜索</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#modify-shop-award" id="btn-add-award">添加
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-7 col-md-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <table class="table award-management-table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" width="1" class="text-center">#</th>
+                                        <th scope="col" class="text-center">名称</th>
+                                        <th scope="col" class="text-center">积分</th>
+                                        <th scope="col" class="text-center">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-4">
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <h5 class="weight-400">顾客列表</h5>
+                                    <table class="table text-right shop-user-table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th class="text-center">用户</th>
+                                            <th class="text-center">积分</th>
+                                            <th class="text-center">关联时间</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <h5 class="weight-400">积分兑换列表</h5>
+                                    <table class="table text-right user-point-table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th class="text-center">奖品</th>
+                                            <th class="text-center">消费时间</th>
+                                            <th class="text-center">顾客</th>
+                                            <th class="text-center">消费积分</th>
+                                            <th class="text-center">操作员</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr class="my-5">
+
+            </div>
+
+            <footer class="footer">
+
+            </footer>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="modal fade" id="modify-shop-award" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header px-4">
+                <h5 class="modal-title" id="">商铺奖品编辑</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="material-icons ">close</span>
+                </button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="form-group form-inline">
+                    <label>奖品名称 &nbsp;</label>
+                    <input class="form-control" type="text" id="award-name">
+                </div>
+                <div class="form-group">
+                    <label>优先级</label>
+                    <input class="form-control" type="text" id="award-priority">
+                </div>
+                <div class="form-group">
+                    <label>需要积分</label>
+                    <input class="form-control" type="number" id="award-point">
+                </div>
+                <div class="form-group">
+                    <label>奖品简述</label>
+                    <textarea class="form-control" id="award-desc" placeholder="简介"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>缩略图</label>
+                    <input class="form-control-file" type="file" id="award-img" placeholder="缩略图">
+                </div>
+                <div class="form-group form-inline">
+                    <div>验证码:</div>
+                    <input class="form-control" type="text" id="j_captcha" name="verifyCode"
+                           placeholder="验证码">
+                    <div class="item-input">
+                        <img id="captcha_img" type="text" alt="点击更换" title="点击更换"
+                             onclick="changeVerityCode(this)"
+                             src="/o2o/Kaptcha">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer px-4">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="submit">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../resources/assets/js/lib/moment.min.js"></script>
+<script src="../resources/assets/js/lib/jquery.min.js"></script>
+<script src="../resources/assets/js/lib/popper.min.js"></script>
+<script src="../resources/assets/js/bootstrap/bootstrap.min.js"></script>
+<script src="../resources/assets/js/chosen-js/chosen.jquery.js"></script>
+<script src="../resources/assets/js/custom.js"></script>
+<script src="../resources/assets/js/chartjs/echarts.min.js"></script>
+
+<script src="../resources/assets/js/shop/common.js"></script>
+
+<script src="../resources/assets/js/shop/loginout.js"></script>
+<script src="../resources/assets/js/shop/getuserlist.js"></script>
+<script src="../resources/assets/js/shop/getshopinfo.js"></script>
+<script src="../resources/assets/js/shop/awarddelivercheck.js"></script>
+<script src="../resources/assets/js/shop/awardmanagement.js"></script>
+<script src="../resources/assets/js/shop/awardoperation.js"></script>
+
+</body>
+
+</html>

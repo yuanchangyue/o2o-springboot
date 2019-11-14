@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.dao.ProductCategoryDaoTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.547 s <<< FAILURE! - in com.changyue.o2o.dao.ProductCategoryDaoTest
+testABatchInsert(com.changyue.o2o.dao.ProductCategoryDaoTest)  Time elapsed: 0.281 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: 
+
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`shopping`.`tb_product_category`, CONSTRAINT `fk_procate_shop` FOREIGN KEY (`shop_id`) REFERENCES `tb_shop` (`shop_id`))
+### The error may exist in file [E:\o2o-springboot-master\o2o-springboot-master\target\classes\mapper\ProducCategoryMapper.xml]
+### The error may involve com.changyue.o2o.dao.ProductCategoryDao.batchInsertProductCategory-Inline
+### The error occurred while setting parameters
+### SQL: insert into         tb_product_category(product_category_name,priority,create_time,shop_id)         values                        (             ?,             ?,             ?,             ?             )          ,              (             ?,             ?,             ?,             ?             )
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`shopping`.`tb_product_category`, CONSTRAINT `fk_procate_shop` FOREIGN KEY (`shop_id`) REFERENCES `tb_shop` (`shop_id`))
+; Cannot add or update a child row: a foreign key constraint fails (`shopping`.`tb_product_category`, CONSTRAINT `fk_procate_shop` FOREIGN KEY (`shop_id`) REFERENCES `tb_shop` (`shop_id`)); nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`shopping`.`tb_product_category`, CONSTRAINT `fk_procate_shop` FOREIGN KEY (`shop_id`) REFERENCES `tb_shop` (`shop_id`))
+	at com.changyue.o2o.dao.ProductCategoryDaoTest.testABatchInsert(ProductCategoryDaoTest.java:55)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`shopping`.`tb_product_category`, CONSTRAINT `fk_procate_shop` FOREIGN KEY (`shop_id`) REFERENCES `tb_shop` (`shop_id`))
+	at com.changyue.o2o.dao.ProductCategoryDaoTest.testABatchInsert(ProductCategoryDaoTest.java:55)
+

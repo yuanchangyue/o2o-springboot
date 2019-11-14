@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.dao.ShopAuthMapDaoTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.875 s <<< FAILURE! - in com.changyue.o2o.dao.ShopAuthMapDaoTest
+testDeleteShopAuthMap(com.changyue.o2o.dao.ShopAuthMapDaoTest)  Time elapsed: 0.156 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<1>
+	at com.changyue.o2o.dao.ShopAuthMapDaoTest.testDeleteShopAuthMap(ShopAuthMapDaoTest.java:60)
+
+testUpdateShopAuthMap(com.changyue.o2o.dao.ShopAuthMapDaoTest)  Time elapsed: 0.172 s  <<< FAILURE!
+java.lang.AssertionError: expected:<1> but was:<0>
+	at com.changyue.o2o.dao.ShopAuthMapDaoTest.testUpdateShopAuthMap(ShopAuthMapDaoTest.java:72)
+

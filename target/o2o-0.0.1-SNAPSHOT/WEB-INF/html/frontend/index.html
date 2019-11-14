@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="../resources/css/bootstrap.css">
+    <link rel="stylesheet" href="../resources/css/index.css">
+    <link rel="stylesheet" href="../resources/css/clear.css">
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.css" rel="stylesheet">
+</head>
+
+<style>
+
+    .shop-card {
+        margin: 10px;
+        height: 190px;
+        padding: 8px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    }
+
+    .shop-card .list-img {
+        display: flex;
+    }
+
+    .shop-card .list-img li {
+        padding-right: 8px;
+    }
+
+    .shop-card .shop-name {
+        color: #333;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .shop-card .shop-description {
+        color: #666;
+        font-size: 12px;
+    }
+
+    .index-footerTab_bl0lbJN {
+        display: block;
+        -webkit-flex: 1;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        text-align: center;
+    }
+
+    .index-footer_Gtduid_ {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-justify-content: space-between;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding-top: .12rem;
+        padding-top: 1.2vw;
+        background-color: #fff;
+        min-height: 1.333333rem;
+        min-height: 13.333333vw;
+        -webkit-box-shadow: 0 -0.026667rem 0.053333rem rgba(0, 0, 0, .1);
+        box-shadow: 0 -0.026667rem 0.053333rem rgba(0, 0, 0, .1);
+        -webkit-box-shadow: 0 -0.266667vw 0.533333vw rgba(0, 0, 0, .1);
+        box-shadow: 0 -0.266667vw 0.533333vw rgba(0, 0, 0, .1);
+    }
+
+</style>
+
+<body>
+
+<div class="nav-bar">
+
+    <!--<h4 style="text-align: center ;color: #0085ff">首页</h4>-->
+
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="搜索"
+               onclick="window.location.href='/o2o/frontend/shoplist'">
+    </div>
+
+    <!--轮播图-->
+    <div id="carousel-generic" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-generic" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" id="index-banner">
+
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-generic" role="button" data-slide="prev">
+            <span aria-hidden="true" class="fas fa-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-generic" role="button" data-slide="next">
+            <span aria-hidden="true" class="fas fa-chevron-right"> </span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="shop-warp">
+
+    <div class="shop-category-wrap container">
+        <div class="row container center-block" id="index-category">
+
+        </div>
+    </div>
+
+    <div class="shop-list-warp">
+
+    </div>
+
+</div>
+
+<footer class="index-wrapper_1Rsz2pX">
+    <div class="index-footer_Gtduid_">
+        <a href="/o2o/frontend/index" class="index-footerTab_bl0lbJN">
+            <span class="index-footerTabText_1It8yh0 index-footerTabTextActive_3gjOLc6">首页</span>
+        </a>
+        <a href="/o2o/frontend/me" class="index-footerTab_bl0lbJN">
+            <span class="index-footerTabText_1It8yh0">我的</span>
+        </a>
+    </div>
+</footer>
+
+<script src="../resources/assets/js/lib/jquery.min.js"></script>
+<script src="../resources/assets/js/shop/common.js"></script>
+<script src="../resources/assets/js/bootstrap/bootstrap.min.js"></script>
+
+<script src="../resources/js/commons/carousel.js"></script>
+<script>
+
+    $(function () {
+
+        var pageIndex = 1;
+        var pageSize = 99;
+        var shopList = "/o2o/frontend/listshops";
+        var headLine = "/o2o/frontend/listmainpageinfo";
+
+        function showShopList() {
+            var shopListUrl = shopList + "?pageIndex=" + pageIndex + "&pageSize=" + pageSize;
+            $.getJSON(shopListUrl, function (data) {
+
+                var shopCardHtml = "";
+
+                data.shopPageInfo.list.map(function (item, index) {
+                    shopCardHtml += '<section class="shop-card">' +
+                        '    <p class="shop-name">' + item.shopName + '</p>' +
+                        '    <p class="shop-description">' + item.shopDesc + '</p>' +
+                        '    <ul class="list-img">' +
+                        '        <li><img' +
+                        '                src="https://cube.elemecdn.com/2/ff/442a38bf56edea173c0dfa9b8e5fdjpeg.jpeg?x-oss-process=image/format,webp/resize,w_130,h_130,m_fixed"' +
+                        '                class="img-thumbnail"></li>' +
+                        '        <li><img' +
+                        '                src="https://cube.elemecdn.com/2/ff/442a38bf56edea173c0dfa9b8e5fdjpeg.jpeg?x-oss-process=image/format,webp/resize,w_130,h_130,m_fixed"' +
+                        '                class="img-thumbnail"></li>' +
+                        '        <li><img' +
+                        '                src="https://cube.elemecdn.com/2/ff/442a38bf56edea173c0dfa9b8e5fdjpeg.jpeg?x-oss-process=image/format,webp/resize,w_130,h_130,m_fixed"' +
+                        '                class="img-thumbnail"></li>' +
+                        '    </ul>' +
+                        '</section>';
+                });
+
+                $(".shop-list-warp").html(shopCardHtml);
+
+            })
+        }
+
+        showShopList();
+
+        $.getJSON(headLine, function (data) {
+
+            if (data.success) {
+                $.map(data.shopCategoryList, function (item, index) {
+                    var indexCategoryHtml = '<div class="col-xs-3 col-md-4 " id="' + item.shopCategoryId + '">' +
+                        '            <div class="shop-category-info text-center">' +
+                        '                <img src="' + getConetxtPath() + item.shopCategoryImg + '" alt=""  class="img-circle img-responsive">' +
+                        '                <h5>' + item.shopCategoryName + '</h5>' +
+                        '            </div>' +
+                        '        </div>';
+                    $("#index-category").append(indexCategoryHtml);
+
+                });
+
+                $.map(data.headLineList, function (item, index) {
+                    var indexBannerHtml = '<div class="item" >' +
+                        '            <img src="' + getConetxtPath() + item.lineImg + '" style="object-fit:fill;" alt="...">' +
+                        '            <div class="carousel-caption">' +
+                        '            </div></div>';
+                    $("#index-banner").append(indexBannerHtml);
+                });
+
+                $("#index-banner").find("div").first().addClass("active");
+            }
+        })
+
+
+    });
+</script>
+
+
+</body>
+</html>

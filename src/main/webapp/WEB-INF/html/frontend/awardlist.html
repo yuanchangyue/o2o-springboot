@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>奖品列表</title>
+    <link rel="stylesheet" href="../resources/css/bootstrap.css">
+    <link rel="stylesheet" href="../resources/css/clear.css">
+    <link rel="stylesheet" href="../resources/css/shop/awardlist.css">
+    <link href="https://cdn.bootcss.com/font-awesome/5.10.0-12/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="nav top-nav">
+    <span class="fas fa-chevron-left" onclick="javascript:history.back(-1);"></span>
+    <h1 class="text-center nav-title">当前积分</h1>
+</div>
+<div class="content-warp">
+    <section class="point-product-list">
+    </section>
+</div>
+
+<script src="../resources/assets/js/lib/jquery.min.js"></script>
+<script src="../resources/assets/js/shop/common.js"></script>
+<script src="../resources/assets/js/bootstrap/bootstrap.min.js"></script>
+<script>
+    $(function () {
+
+        var pageIndex = 1;
+        var pageSize = 99;
+        var shopId = getQueryString("shopId");
+        var awardName = '';
+        var listUrl = '/o2o/frontend/listawardsbyshop';
+        var exchangeUrl = '/o2o/frontend/adduserawardmap';
+
+        function getList() {
+            var url = listUrl + "?pageIndex=" + pageIndex + '&pageSize=' + pageSize + '&shopId=' + shopId + '&awardName=' + awardName;
+            console.info(url);
+            $.getJSON(url, function (data) {
+                if (data.success) {
+                    var userShopMapList = data.awardPageInfo.list;
+                    var totalPoint = data.totalPoint;
+                    $(".nav-title").text("当前积分有" + totalPoint);
+                    var tempHtml = '';
+                    userShopMapList.map(function (item, index) {
+                        tempHtml += '<div class="item-box">' +
+                            '<div class="point-box">' +
+                            '        <h1 class="point-text">' + item.point + '</h1><span>需要' + item.point + '积分</span>' +
+                            '    </div>' +
+                            '    <div class="award-box">' +
+                            '        <p class="award-name">' + item.awardName + '</p>' +
+                            '        <span>创建于' + timeStamp2String(item.createTime) + '</span>' +
+                            '    </div>' +
+                            '    <div class="btn-box">' +
+                            '        <button class="btn-use" data-total="' + totalPoint + '" data-id="' + item.awardId + '" data-point="' + item.point + '">点击使用</button>' +
+                            '    </div>' +
+                            '</div>  ';
+                    });
+                    $('.point-product-list').html(tempHtml);
+                }
+            });
+        }
+
+        getList();
+
+        $(document).on("click", ".btn-use", function (e) {
+
+            var point = $(this).data("point");
+            var totalPoint = $(this).data("total");
+            var awardId = $(this).data("id");
+
+            if (totalPoint > point) {
+                if (confirm("确定消耗" + point + "吗？")) {
+                    $.ajax({
+                        url: exchangeUrl,
+                        type: "POST",
+                        data: {
+                            awardId: awardId
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.success) {
+                                alert("积分兑换成功");
+                                $(".nav-title").text("当前积分有" + totalPoint);
+                            } else {
+                                alert("兑换失败")
+                            }
+                        }
+                    })
+                }
+            } else {
+                alert("积分不足");
+            }
+        });
+    });
+</script>
+</body>
+</html>

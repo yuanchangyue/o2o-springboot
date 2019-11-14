@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.dao.UserShopMapDaoTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.375 s <<< FAILURE! - in com.changyue.o2o.dao.UserShopMapDaoTest
+testInsertUserShop(com.changyue.o2o.dao.UserShopMapDaoTest)  Time elapsed: 0.5 s  <<< ERROR!
+org.springframework.dao.DuplicateKeyException: 
+
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '8-19' for key 'uq_user_shop'
+### The error may exist in file [E:\o2o-springboot-master\o2o-springboot-master\target\classes\mapper\UserShopMapMapper.xml]
+### The error may involve com.changyue.o2o.dao.UserShopMapDao.insertUserShopMap-Inline
+### The error occurred while setting parameters
+### SQL: insert into tb_user_shop_map (user_id,shop_id,create_time,point)             values (?, ?,?, ?)
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '8-19' for key 'uq_user_shop'
+; Duplicate entry '8-19' for key 'uq_user_shop'; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '8-19' for key 'uq_user_shop'
+	at com.changyue.o2o.dao.UserShopMapDaoTest.testInsertUserShop(UserShopMapDaoTest.java:40)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '8-19' for key 'uq_user_shop'
+	at com.changyue.o2o.dao.UserShopMapDaoTest.testInsertUserShop(UserShopMapDaoTest.java:40)
+

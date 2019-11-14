@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.changyue.o2o.dao.ProductImgDaoTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.5 s <<< FAILURE! - in com.changyue.o2o.dao.ProductImgDaoTest
+testBDeleteProductImg(com.changyue.o2o.dao.ProductImgDaoTest)  Time elapsed: 0.234 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<2>
+	at com.changyue.o2o.dao.ProductImgDaoTest.testBDeleteProductImg(ProductImgDaoTest.java:70)
+
